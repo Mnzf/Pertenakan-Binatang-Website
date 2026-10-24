@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Detail | [Ranch Name]</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body class="">
+  <!-- ===== SHARED HEADER (identical on every public page) ===== -->
+  <header class="site-header">
+    <a class="logo" href="../index.html">[ RANCH LOGO ]</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="has-dropdown">
+          <a href="animals.html">Our Animals</a>
+          <ul class="dropdown">
+            <li><a href="animals.html?category=cattle">Cattle</a></li>
+            <li><a href="animals.html?category=goats">Goats</a></li>
+            <li><a href="animals.html?category=sheep">Sheep</a></li>
+            <li><a href="animals.html?category=buffalos">Buffalos</a></li>
+            <li><a href="animals.html?category=poultry">Poultry</a></li>
+            <li><a href="animals.html?category=duck">Duck</a></li>
+            <li><a href="animals.html?category=quail">Quail</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="products.html">Products</a>
+          <ul class="dropdown">
+            <li><a href="products.html?category=meat">Meat</a></li>
+            <li><a href="products.html?category=dairy">Dairy</a></li>
+            <li><a href="products.html?category=eggs">Eggs</a></li>
+            <li><a href="products.html?category=wool-fiber">Wool / Fiber</a></li>
+            <li><a href="products.html?category=honey">Honey</a></li>
+            <li><a href="products.html?category=fertilizer">Fertilizer</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="login-actions">
+      <a class="btn secondary" href="buyer-login.html">Buyer Login</a>
+      <a class="btn" href="staff-login.html">Herd Management Login (Staff)</a>
+    </div>
+  </header>
+
+  <main>
+    <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="animals.html">Our Animals</a> / [Category] / <strong>[Animal ID]</strong></p>
+
+    <section class="detail-grid">
+      <div class="detail-gallery">
+        <img src="../assets/images/placeholder.svg" alt="[Primary animal photo]">
+        <div class="thumbs">
+          <img src="../assets/images/placeholder.svg" alt="[Photo]">
+          <img src="../assets/images/placeholder.svg" alt="[Photo]">
+          <img src="../assets/images/placeholder.svg" alt="[Photo]">
+        </div>
+      </div>
+
+      <div class="detail-info">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn">Save</button>
+        <p class="eyebrow">[SPECIES] | ID [0000]</p>
+        <h1>[Animal Name]</h1>
+        <p class="price">B$X,XXX <small>or Inquire</small></p>
+        <dl class="stats-grid">
+          <div><dt>Breed</dt><dd>[Value]</dd></div>
+          <div><dt>Age / DOB</dt><dd>[Value]</dd></div>
+          <div><dt>Sex</dt><dd>[Value]</dd></div>
+          <div><dt>Weight</dt><dd>[Value]</dd></div>
+          <div><dt>Location</dt><dd>[Value]</dd></div>
+          <div><dt>Registration</dt><dd>[Value]</dd></div>
+        </dl>
+        <button type="button" class="btn full" id="inquire-btn">Inquire / Request to Buy</button>
+        <p class="fine">No payment is taken at this stage. The ranch will review your request.</p>
+      </div>
+    </section>
+
+    <section class="detail-body">
+      <div>
+        <h2>About this animal</h2>
+        <p>[Temperament, traits, intended use.]</p>
+        <h3>Lineage</h3>
+        <p>[Sire / Dam / registration summary]</p>
+      </div>
+      <aside class="record-summary">
+        <h3>Health records summary</h3>
+        <ul>
+          <li>Vaccinations up to date</li>
+          <li>Last health check: [Date]</li>
+          <li>Testing / certification: [Value]</li>
+        </ul>
+        <a href="contact.html">Request complete records</a>
+      </aside>
+    </section>
+
+    <section id="related-animals">
+      <h2>Related animals</h2>
+      <a href="animals.html">View category</a>
+      <div class="card-grid three">
+      <article class="card">
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      <article class="card">
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      <article class="card">
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      </div>
+    </section>
+  </main>
+  <!-- ===== SHARED FOOTER (identical on every public page) ===== -->
+  <footer class="site-footer">
+    <div>
+      <strong>[ RANCH NAME ]</strong>
+      <p>[Address, Location]</p>
+      <p>[Phone] | [Email]</p>
+    </div>
+    <div>
+      <strong>Hours</strong>
+      <p>Mon-Fri: [hours]</p>
+      <p>Sat-Sun: By appointment</p>
+    </div>
+    <div>
+      <strong>Quick links</strong>
+      <ul>
+        <li><a href="animals.html">Animals</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="buyer-login.html">Buyer Login</a></li>
+      </ul>
+    </div>
+    <div>
+      <strong>Follow</strong>
+      <p>[Social] [Social] [Social]</p>
+    </div>
+    <form class="newsletter" id="newsletter-form">
+      <strong>Ranch updates</strong>
+      <label for="newsletter-email">Email address</label>
+      <input type="email" id="newsletter-email" name="email" placeholder="you@example.com">
+      <button type="submit" class="btn">Sign up</button>
+    </form>
+    <p class="footer-bottom">&copy; [YEAR] [RANCH NAME] | <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Accessibility</a></p>
+  </footer>
+
+  <!-- JavaScript is added in Phase 3 and 4. Example:
+  <script type="module" src="../js/main.js"></script> -->
+</body>
+</html>

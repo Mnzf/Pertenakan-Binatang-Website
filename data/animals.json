@@ -1,0 +1,4 @@
+[
+  { "id": "A001", "name": "[Animal Name]", "species": "cattle", "breed": "[Breed]", "sex": "female", "ageMonths": 24, "price": 2500, "status": "available", "featured": true, "image": "assets/images/placeholder.svg" },
+  { "id": "A002", "name": "[Animal Name]", "species": "goats", "breed": "[Breed]", "sex": "male", "ageMonths": 12, "price": 600, "status": "available", "featured": false, "image": "assets/images/placeholder.svg" }
+]
