@@ -1,0 +1,4 @@
+[
+  { "id": "P001", "name": "[Product Name]", "category": "eggs", "description": "[Short descriptor]", "price": 6.5, "unit": "tray", "image": "assets/images/placeholder.svg" },
+  { "id": "P002", "name": "[Product Name]", "category": "honey", "description": "[Short descriptor]", "price": 15, "unit": "jar", "image": "assets/images/placeholder.svg" }
+]
