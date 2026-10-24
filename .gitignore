@@ -1,0 +1,16 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+
+# Node / Firebase local files
+node_modules/
+.firebase/
+*.log
+firebase-debug.log
+
+# Secrets
+.env
+serviceAccountKey.json
