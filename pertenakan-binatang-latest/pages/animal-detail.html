@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../css/components.css">
 </head>
 <body class="">
-  <!-- HEADER -->
+  <!-- ===== SHARED HEADER (identical on every public page) ===== -->
   <header class="site-header">
     <a class="logo" href="../index.html">KAZNISAH<br>FARMING<br>Sdn Bhd</a>
     <nav class="main-nav" aria-label="Main navigation">
@@ -39,90 +39,18 @@
   </header>
 
   <main>
-    <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="animals.html">Our Animals</a> / [Category] / <strong>[Animal ID]</strong></p>
+    <p class="breadcrumb" id="breadcrumb"><a href="../index.html">Home</a> / <a href="animals.html">Our Animals</a></p>
 
-    <section class="detail-grid">
-      <div class="detail-gallery">
-        <img src="../assets/images/placeholder.svg" alt="[Primary animal photo]">
-        <div class="thumbs">
-          <img src="../assets/images/placeholder.svg" alt="[Photo]">
-          <img src="../assets/images/placeholder.svg" alt="[Photo]">
-          <img src="../assets/images/placeholder.svg" alt="[Photo]">
-        </div>
-      </div>
+    <!-- Filled in by js/pages/animal-detail.js using ?id=... from the URL -->
+    <div id="animal-detail" aria-live="polite"><p class="loading">Loading animal...</p></div>
 
-      <div class="detail-info">
-        <span class="status">Available</span>
-        <button type="button" class="save-btn">Save</button>
-        <p class="eyebrow">[SPECIES] | ID [0000]</p>
-        <h1>[Animal Name]</h1>
-        <p class="price">B$X,XXX <small>or Inquire</small></p>
-        <dl class="stats-grid">
-          <div><dt>Breed</dt><dd>[Value]</dd></div>
-          <div><dt>Age / DOB</dt><dd>[Value]</dd></div>
-          <div><dt>Sex</dt><dd>[Value]</dd></div>
-          <div><dt>Weight</dt><dd>[Value]</dd></div>
-          <div><dt>Location</dt><dd>[Value]</dd></div>
-          <div><dt>Registration</dt><dd>[Value]</dd></div>
-        </dl>
-        <a class="btn full" id="inquire-btn" href="inquire.html">Send an Inquiry to Buy</a>
-        <p class="fine">No payment is taken online. Send an inquiry and the owner will contact you.</p>
-      </div>
-    </section>
-
-    <section class="detail-body">
-      <div>
-        <h2>About this animal</h2>
-        <p>[Temperament, traits, intended use.]</p>
-        <h3>Lineage</h3>
-        <p>[Sire / Dam / registration summary]</p>
-      </div>
-      <aside class="record-summary">
-        <h3>Health records summary</h3>
-        <ul>
-          <li>Vaccinations up to date</li>
-          <li>Last health check: [Date]</li>
-          <li>Testing / certification: [Value]</li>
-        </ul>
-        <a href="contact.html">Request complete records</a>
-      </aside>
-    </section>
-
-    <section id="related-animals">
+    <section id="related-animals" hidden>
       <h2>Related animals</h2>
-      <a href="animals.html">View category</a>
-      <div class="card-grid three">
-      <article class="card">
-        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
-        <span class="status">Available</span>
-        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
-        <h3>[Animal Name / ID]</h3>
-        <p>[Breed] | [Age] | [Sex]</p>
-        <p><strong>B$X,XXX / Inquire</strong></p>
-        <a href="animal-detail.html">View details</a>
-      </article>
-      <article class="card">
-        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
-        <span class="status">Available</span>
-        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
-        <h3>[Animal Name / ID]</h3>
-        <p>[Breed] | [Age] | [Sex]</p>
-        <p><strong>B$X,XXX / Inquire</strong></p>
-        <a href="animal-detail.html">View details</a>
-      </article>
-      <article class="card">
-        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
-        <span class="status">Available</span>
-        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
-        <h3>[Animal Name / ID]</h3>
-        <p>[Breed] | [Age] | [Sex]</p>
-        <p><strong>B$X,XXX / Inquire</strong></p>
-        <a href="animal-detail.html">View details</a>
-      </article>
-      </div>
+      <a href="animals.html" id="related-link">View category</a>
+      <div class="card-grid three" id="related-list"></div>
     </section>
   </main>
-  <!-- FOOTER -->
+  <!-- ===== SHARED FOOTER (identical on every public page) ===== -->
   <footer class="site-footer">
     <div>
       <strong>KAZNISAH FARMING</strong>
