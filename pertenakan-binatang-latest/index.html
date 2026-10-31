@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | [Ranch Name]</title>
+  <title>Home | Kaznisah Farming Sdn Bhd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@400;600;700&family=Jacques+Francois&family=Roboto+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/components.css">
 </head>
 <body class="">
-  <!-- ===== SHARED HEADER (identical on every public page) ===== -->
+  <!-- HEADER -->
   <header class="site-header">
-    <a class="logo" href="index.html"><img src="assets/images/Logo.png" alt="Kaznisah Farming SDN BHD Logo"></a>
+    <a class="logo" href="index.html">KAZNISAH<br>FARMING<br>Sdn Bhd</a>
     <nav class="main-nav" aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -21,28 +24,16 @@
             <li><a href="pages/animals.html?category=cattle">Cattle</a></li>
             <li><a href="pages/animals.html?category=goats">Goats</a></li>
             <li><a href="pages/animals.html?category=sheep">Sheep</a></li>
-            <li><a href="pages/animals.html?category=buffalos">Buffalos</a></li>
+            <li><a href="pages/animals.html?category=bulls">Bulls</a></li>
             <li><a href="pages/animals.html?category=poultry">Poultry</a></li>
-            <li><a href="pages/animals.html?category=duck">Duck</a></li>
-            <li><a href="pages/animals.html?category=quail">Quail</a></li>
-          </ul>
-        </li>
-        <li class="has-dropdown">
-          <a href="pages/products.html">Products</a>
-          <ul class="dropdown">
-            <li><a href="pages/products.html?category=meat">Meat</a></li>
-            <li><a href="pages/products.html?category=dairy">Dairy</a></li>
-            <li><a href="pages/products.html?category=eggs">Eggs</a></li>
-            <li><a href="pages/products.html?category=wool-fiber">Wool / Fiber</a></li>
-            <li><a href="pages/products.html?category=honey">Honey</a></li>
-            <li><a href="pages/products.html?category=fertilizer">Fertilizer</a></li>
+            <li><a href="pages/animals.html?category=horses">Horses</a></li>
           </ul>
         </li>
         <li><a href="pages/contact.html">Contact</a></li>
       </ul>
     </nav>
     <div class="login-actions">
-      <a class="btn-secondary" href="pages/buyer-login.html">Buyer Login</a>
+      <a class="btn secondary" href="pages/buyer-login.html">Buyer Login</a>
       <a class="btn" href="pages/staff-login.html">Herd Management Login (Staff)</a>
     </div>
   </header>
@@ -50,11 +41,10 @@
   <main>
     <section class="hero" id="hero">
       <div class="hero-copy">
-        <p class="eyebrow">[RANCH NAME] | [LOCATION]</p>
-        <h1>[ GENERIC RANCH TAGLINE ]]</h1>
-        <p>[Brief introduction to the ranch, its animals, and farm products]</p>
+        <p class="eyebrow">KAZNISAH FARMING | Kampong Kiudang</p>
+        <h1>Raised the old-fashioned way</h1>
+        <p>Welcome to Kaznisah Farm Sdn Bhd, where family traditions and animals are raised with care. We take part in maintaining the health of the animals in a natural environment, bringing the best quality to the market.</p>
         <a class="btn" href="pages/animals.html">Browse Animals</a>
-        <a class="btn-secondary" href="pages/products.html">Shop Products</a>
       </div>
       <img src="assets/images/placeholder.svg" alt="[Hero image]">
     </section>
@@ -102,46 +92,11 @@
       </article>
       </div>
     </section>
-
-    <section id="featured-products">
-      <h2>Featured products</h2>
-      <a href="pages/products.html">Shop all products</a>
-      <div class="card-grid three">
-      <article class="card">
-        <img src="assets/images/placeholder.svg" alt="[Product name]">
-        <span class="category">[Category]</span>
-        <h3>[Product Name]</h3>
-        <p>[Short product descriptor]</p>
-        <p><strong>B$XX.XX / unit</strong></p>
-        <button type="button" class="add-to-cart">Add to cart</button>
-        <a href="pages/product-detail.html">View product details</a>
-      </article>
-      <article class="card">
-        <img src="assets/images/placeholder.svg" alt="[Product name]">
-        <span class="category">[Category]</span>
-        <h3>[Product Name]</h3>
-        <p>[Short product descriptor]</p>
-        <p><strong>B$XX.XX / unit</strong></p>
-        <button type="button" class="add-to-cart">Add to cart</button>
-        <a href="pages/product-detail.html">View product details</a>
-      </article>
-      <article class="card">
-        <img src="assets/images/placeholder.svg" alt="[Product name]">
-        <span class="category">[Category]</span>
-        <h3>[Product Name]</h3>
-        <p>[Short product descriptor]</p>
-        <p><strong>B$XX.XX / unit</strong></p>
-        <button type="button" class="add-to-cart">Add to cart</button>
-        <a href="pages/product-detail.html">View product details</a>
-      </article>
-      </div>
-    </section>
-
     <section id="about-teaser">
       <img src="assets/images/placeholder.svg" alt="[Ranch photo]">
       <div>
-        <h2>About [Ranch Name]</h2>
-        <p>[Short ranch story teaser.]</p>
+        <h2>About Kaznisah Farming Sdn Bhd</h2>
+        <p>A local land filled with different animals.</p>
         <a class="btn secondary" href="pages/about.html">Learn about the ranch</a>
       </div>
     </section>
@@ -161,11 +116,11 @@
       <a class="btn" href="pages/contact.html">Contact / Book a Visit</a>
     </section>
   </main>
-  <!-- ===== SHARED FOOTER (identical on every public page) ===== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div>
-      <strong>[ RANCH NAME ]</strong>
-      <p>[Address, Location]</p>
+      <strong>KAZNISAH FARMING</strong>
+      <p>Hust Brew, No 8 Simpang 88 Kg Bekiau, Jalan Lamunin, Kampong Kiudang TE1143</p>
       <p>[Phone] | [Email]</p>
     </div>
     <div>
@@ -177,7 +132,6 @@
       <strong>Quick links</strong>
       <ul>
         <li><a href="pages/animals.html">Animals</a></li>
-        <li><a href="pages/products.html">Products</a></li>
         <li><a href="pages/about.html">About</a></li>
         <li><a href="pages/contact.html">Contact</a></li>
         <li><a href="pages/buyer-login.html">Buyer Login</a></li>
@@ -187,16 +141,9 @@
       <strong>Follow</strong>
       <p>[Social] [Social] [Social]</p>
     </div>
-    <form class="newsletter" id="newsletter-form">
-      <strong>Ranch updates</strong>
-      <label for="newsletter-email">Email address</label>
-      <input type="email" id="newsletter-email" name="email" placeholder="you@example.com">
-      <button type="submit" class="btn">Sign up</button>
-    </form>
-    <p class="footer-bottom">&copy; [YEAR] [RANCH NAME] | <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Accessibility</a></p>
+    <p class="footer-bottom">&copy; 2026 KAZNISAH FARMING | <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Accessibility</a></p>
   </footer>
 
-  <!-- JavaScript is added in Phase 3 and 4. Example:
-  <script type="module" src="js/main.js"></script> -->
+  <!-- JavaScript -->
 </body>
 </html>

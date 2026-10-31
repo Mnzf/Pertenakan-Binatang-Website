@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inquire | Kaznisah Farming Sdn Bhd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@400;600;700&family=Jacques+Francois&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body class="">
+  <!-- HEADER -->
+  <header class="site-header">
+    <a class="logo" href="../index.html">KAZNISAH<br>FARMING<br>Sdn Bhd</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="has-dropdown">
+          <a href="animals.html">Our Animals</a>
+          <ul class="dropdown">
+            <li><a href="animals.html?category=cattle">Cattle</a></li>
+            <li><a href="animals.html?category=goats">Goats</a></li>
+            <li><a href="animals.html?category=sheep">Sheep</a></li>
+            <li><a href="animals.html?category=bulls">Bulls</a></li>
+            <li><a href="animals.html?category=poultry">Poultry</a></li>
+            <li><a href="animals.html?category=horses">Horses</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="login-actions">
+      <a class="btn secondary" href="buyer-login.html">Buyer Login</a>
+      <a class="btn" href="staff-login.html">Herd Management Login (Staff)</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="animals.html">Our Animals</a> / <a href="animal-detail.html">[Animal name]</a> / Inquire</p>
+      <h1>Send an Inquiry to Buy</h1>
+      <p>Tell the owner which animal you are interested in. The owner will contact you to arrange the purchase. No online payment.</p>
+    </section>
+
+    <section class="contact-grid">
+      <form id="inquiry-form">
+        <h2>Request details</h2>
+        <p>[Animal name] / [Tag ID] | Availability: [Pending confirmation]</p>
+        <label for="inq-type">Request type</label>
+        <select id="inq-type" name="requestType"><option value="purchase">Purchase inquiry</option></select>
+        <label for="inq-contact">Preferred contact method</label>
+        <select id="inq-contact" name="contactMethod"><option value="email">Email</option><option value="phone">Phone</option></select>
+        <label for="inq-time">Preferred contact time (optional)</label>
+        <input type="text" id="inq-time" name="contactTime">
+        <label for="inq-message">Message to the ranch *</label>
+        <textarea id="inq-message" name="message" required placeholder="Questions / intended use / details"></textarea>
+        <p class="fine">Do not include payment information or sensitive personal data.</p>
+        <label><input type="checkbox" name="understand" required> I understand this request does not reserve the animal.</label>
+        <p id="inquiry-error" role="alert"></p>
+        <button type="submit" class="btn">Continue with Buyer Login</button>
+        <a class="btn secondary" href="buyer-register.html">Create buyer account</a>
+        <a class="text-link" href="animal-detail.html">Cancel</a>
+      </form>
+
+      <div>
+        <img src="../assets/images/placeholder.svg" alt="[Selected animal]">
+        <div class="panel">
+          <p class="eyebrow">Buyer-login handoff</p>
+          <p>Sign in to send this request and receive updates. Your draft and selected animal remain available after authentication.</p>
+        </div>
+        <div class="panel">
+          <p class="eyebrow">Prefer to talk to the owner?</p>
+          <p>Phone / WhatsApp: [Phone]<br>Email: [Email]</p>
+          <p class="fine">The owner will reply to confirm availability, price and viewing or collection. No payment is taken on this website.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="inquiry-confirmation" hidden>
+      <p class="eyebrow">REQUEST SUBMITTED</p>
+      <p>Reference: [REQ-ID] | Status: Submitted / Awaiting ranch reply</p>
+      <p>The ranch will review your request. This is not a confirmed reservation.</p>
+      <a class="btn" href="buyer-dashboard.html#inquiries">View inquiry status</a>
+    </section>
+  </main>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div>
+      <strong>KAZNISAH FARMING</strong>
+      <p>Hust Brew, No 8 Simpang 88 Kg Bekiau, Jalan Lamunin, Kampong Kiudang TE1143</p>
+      <p>[Phone] | [Email]</p>
+    </div>
+    <div>
+      <strong>Hours</strong>
+      <p>Mon-Fri: [hours]</p>
+      <p>Sat-Sun: By appointment</p>
+    </div>
+    <div>
+      <strong>Quick links</strong>
+      <ul>
+        <li><a href="animals.html">Animals</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="buyer-login.html">Buyer Login</a></li>
+      </ul>
+    </div>
+    <div>
+      <strong>Follow</strong>
+      <p>[Social] [Social] [Social]</p>
+    </div>
+    <p class="footer-bottom">&copy; 2026 KAZNISAH FARMING | <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Accessibility</a></p>
+  </footer>
+
+  <!-- JavaScript -->
+</body>
+</html>

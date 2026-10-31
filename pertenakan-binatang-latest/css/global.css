@@ -1,0 +1,99 @@
+/* 
+global.css - design tokens, reset, typography, layout helpers
+Source: high-fidelity wireframe (Kaznisah Farming Sdn Bhd)
+*/
+
+:root {
+  /* Colours (from the hi-fi design) */
+  --color-bg:          #e9daa3;   /* page background (cream)      */
+  --color-brown:       #462b1a;   /* header, footer, sidebar      */
+  --color-panel:       #ccb77e;   /* panels, dropdowns, info boxes */
+  --color-gold:        #e5a93c;   /* primary buttons / accents    */
+  --color-ink:         #000000;   /* body text                    */
+  --color-dark:        #242424;   /* dark buttons, borders        */
+  --color-muted:       #595959;   /* secondary text               */
+  --color-border:      #929292;
+  --color-highlight:   #ffe8a7;
+  --color-white:       #ffffff;
+  --color-danger:      #9b1c1c;
+  --color-success:     #1f6b34;
+
+  /* Typography */
+  --font-body:    'Inter', Arial, sans-serif;
+  --font-display: 'Jacques Francois', Georgia, serif;
+  --font-brand:   'Cinzel Decorative', Georgia, serif;
+  --font-mono:    'Roboto Mono', monospace;
+
+  /* Spacing + layout */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 56px;
+  --max-width: 1440px;
+  --radius: 4px;
+  --radius-lg: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--color-ink);
+  background: var(--color-bg);
+}
+
+h1, h2, h3, strong { font-family: var(--font-body); font-weight: 600; }
+h1 { font-size: 36px; line-height: 1.15; margin: 0 0 var(--space-1); }
+h2 { font-size: 23px; line-height: 1.25; margin: 0 0 var(--space-1); }
+h3 { font-size: 18px; margin: 0 0 var(--space-1); }
+p  { line-height: 1.5; margin: 0 0 var(--space-1); }
+
+a { color: inherit; }
+img { display: block; max-width: 100%; height: auto; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+/* Visible keyboard focus (accessibility) */
+:focus-visible { outline: 3px solid var(--color-dark); outline-offset: 3px; }
+
+/* Page content wrapper */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-5);
+  min-height: 650px;
+}
+
+/* Layout helpers */
+.card-grid { display: grid; gap: var(--space-3); }
+.card-grid.two   { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.card-grid.four  { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.eyebrow    { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+.fine, small { font-size: 12px; color: var(--color-muted); }
+.breadcrumb { font-size: 14px; color: var(--color-muted); }
+
+/* Elements with the hidden attribute must really be hidden */
+[hidden] { display: none !important; }
+
+@media (max-width: 900px) {
+  main { padding: 36px var(--space-3); gap: 32px; }
+  .card-grid.three, .card-grid.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  body { font-size: 14px; }
+  h1 { font-size: 30px; }
+  .card-grid.two, .card-grid.three, .card-grid.four { grid-template-columns: 1fr; }
+}

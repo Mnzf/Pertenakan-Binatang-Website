@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Detail | Kaznisah Farming Sdn Bhd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@400;600;700&family=Jacques+Francois&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body class="">
+  <!-- HEADER -->
+  <header class="site-header">
+    <a class="logo" href="../index.html">KAZNISAH<br>FARMING<br>Sdn Bhd</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="has-dropdown">
+          <a href="animals.html">Our Animals</a>
+          <ul class="dropdown">
+            <li><a href="animals.html?category=cattle">Cattle</a></li>
+            <li><a href="animals.html?category=goats">Goats</a></li>
+            <li><a href="animals.html?category=sheep">Sheep</a></li>
+            <li><a href="animals.html?category=bulls">Bulls</a></li>
+            <li><a href="animals.html?category=poultry">Poultry</a></li>
+            <li><a href="animals.html?category=horses">Horses</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="login-actions">
+      <a class="btn secondary" href="buyer-login.html">Buyer Login</a>
+      <a class="btn" href="staff-login.html">Herd Management Login (Staff)</a>
+    </div>
+  </header>
+
+  <main>
+    <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="animals.html">Our Animals</a> / [Category] / <strong>[Animal ID]</strong></p>
+
+    <section class="detail-grid">
+      <div class="detail-gallery">
+        <img src="../assets/images/placeholder.svg" alt="[Primary animal photo]">
+        <div class="thumbs">
+          <img src="../assets/images/placeholder.svg" alt="[Photo]">
+          <img src="../assets/images/placeholder.svg" alt="[Photo]">
+          <img src="../assets/images/placeholder.svg" alt="[Photo]">
+        </div>
+      </div>
+
+      <div class="detail-info">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn">Save</button>
+        <p class="eyebrow">[SPECIES] | ID [0000]</p>
+        <h1>[Animal Name]</h1>
+        <p class="price">B$X,XXX <small>or Inquire</small></p>
+        <dl class="stats-grid">
+          <div><dt>Breed</dt><dd>[Value]</dd></div>
+          <div><dt>Age / DOB</dt><dd>[Value]</dd></div>
+          <div><dt>Sex</dt><dd>[Value]</dd></div>
+          <div><dt>Weight</dt><dd>[Value]</dd></div>
+          <div><dt>Location</dt><dd>[Value]</dd></div>
+          <div><dt>Registration</dt><dd>[Value]</dd></div>
+        </dl>
+        <a class="btn full" id="inquire-btn" href="inquire.html">Send an Inquiry to Buy</a>
+        <p class="fine">No payment is taken online. Send an inquiry and the owner will contact you.</p>
+      </div>
+    </section>
+
+    <section class="detail-body">
+      <div>
+        <h2>About this animal</h2>
+        <p>[Temperament, traits, intended use.]</p>
+        <h3>Lineage</h3>
+        <p>[Sire / Dam / registration summary]</p>
+      </div>
+      <aside class="record-summary">
+        <h3>Health records summary</h3>
+        <ul>
+          <li>Vaccinations up to date</li>
+          <li>Last health check: [Date]</li>
+          <li>Testing / certification: [Value]</li>
+        </ul>
+        <a href="contact.html">Request complete records</a>
+      </aside>
+    </section>
+
+    <section id="related-animals">
+      <h2>Related animals</h2>
+      <a href="animals.html">View category</a>
+      <div class="card-grid three">
+      <article class="card">
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      <article class="card">
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      <article class="card">
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      </div>
+    </section>
+  </main>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div>
+      <strong>KAZNISAH FARMING</strong>
+      <p>Hust Brew, No 8 Simpang 88 Kg Bekiau, Jalan Lamunin, Kampong Kiudang TE1143</p>
+      <p>[Phone] | [Email]</p>
+    </div>
+    <div>
+      <strong>Hours</strong>
+      <p>Mon-Fri: [hours]</p>
+      <p>Sat-Sun: By appointment</p>
+    </div>
+    <div>
+      <strong>Quick links</strong>
+      <ul>
+        <li><a href="animals.html">Animals</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="buyer-login.html">Buyer Login</a></li>
+      </ul>
+    </div>
+    <div>
+      <strong>Follow</strong>
+      <p>[Social] [Social] [Social]</p>
+    </div>
+    <p class="footer-bottom">&copy; 2026 KAZNISAH FARMING | <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Accessibility</a></p>
+  </footer>
+
+  <!-- JavaScript -->
+</body>
+</html>

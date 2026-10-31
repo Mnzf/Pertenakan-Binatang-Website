@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Animals | Kaznisah Farming Sdn Bhd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@400;600;700&family=Jacques+Francois&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body class="">
+  <!-- HEADER -->
+  <header class="site-header">
+    <a class="logo" href="../index.html">KAZNISAH<br>FARMING<br>Sdn Bhd</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="has-dropdown">
+          <a href="animals.html">Our Animals</a>
+          <ul class="dropdown">
+            <li><a href="animals.html?category=cattle">Cattle</a></li>
+            <li><a href="animals.html?category=goats">Goats</a></li>
+            <li><a href="animals.html?category=sheep">Sheep</a></li>
+            <li><a href="animals.html?category=bulls">Bulls</a></li>
+            <li><a href="animals.html?category=poultry">Poultry</a></li>
+            <li><a href="animals.html?category=horses">Horses</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="login-actions">
+      <a class="btn secondary" href="buyer-login.html">Buyer Login</a>
+      <a class="btn" href="staff-login.html">Herd Management Login (Staff)</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro compact">
+      <p class="breadcrumb">Our Animals / [Category]</p>
+      <h1>[Animal Category]</h1>
+      <p>[Category description and buying note.]</p>
+    </section>
+
+    <nav class="category-nav" aria-label="Animal categories">
+      <ul>
+        <li><a href="animals.html?category=cattle">Cattle</a></li>
+        <li><a href="animals.html?category=goats">Goats</a></li>
+        <li><a href="animals.html?category=sheep">Sheep</a></li>
+        <li><a href="animals.html?category=bulls">Bulls</a></li>
+        <li><a href="animals.html?category=poultry">Poultry</a></li>
+        <li><a href="animals.html?category=horses">Horses</a></li>
+      </ul>
+    </nav>
+
+    <section id="featured-in-category">
+      <h2>Featured in this category</h2>
+      <div class="card-grid two">
+      <article class="card featured">
+        <span class="feature-flag">Featured</span>
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      <article class="card featured">
+        <span class="feature-flag">Featured</span>
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      </div>
+    </section>
+
+    <section id="all-animals">
+      <h2>All [category] <span>(24)</span></h2>
+
+      <form class="filter-bar" id="animal-filters" aria-label="Filter and sort animals">
+        <label for="f-species">Species</label>
+        <select id="f-species" name="species"><option value="">All</option></select>
+        <label for="f-breed">Breed</label>
+        <select id="f-breed" name="breed"><option value="">All</option></select>
+        <label for="f-age">Age</label>
+        <select id="f-age" name="age"><option value="">All</option></select>
+        <label for="f-sex">Sex</label>
+        <select id="f-sex" name="sex"><option value="">All</option><option>Male</option><option>Female</option></select>
+        <label for="f-price">Price</label>
+        <select id="f-price" name="price"><option value="">All</option></select>
+        <label for="f-availability">Availability</label>
+        <select id="f-availability" name="availability"><option value="">All</option><option>Available</option><option>Reserved</option></select>
+        <label for="f-sort">Sort</label>
+        <select id="f-sort" name="sort"><option>Newest</option><option>Price: low to high</option><option>Price: high to low</option></select>
+        <button type="reset" class="text-link">Clear all</button>
+      </form>
+
+      <!-- Cards are shown here by js/animals.js later. Copy a card a few times for layout. -->
+      <div class="card-grid three" id="animal-list">
+      <article class="card">
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      <article class="card">
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      <article class="card">
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      <article class="card">
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      <article class="card">
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      <article class="card">
+        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
+        <span class="status">Available</span>
+        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
+        <h3>[Animal Name / ID]</h3>
+        <p>[Breed] | [Age] | [Sex]</p>
+        <p><strong>B$X,XXX / Inquire</strong></p>
+        <a href="animal-detail.html">View details</a>
+      </article>
+      </div>
+      <button type="button" class="btn secondary" id="load-more">Load more</button>
+    </section>
+  </main>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div>
+      <strong>KAZNISAH FARMING</strong>
+      <p>Hust Brew, No 8 Simpang 88 Kg Bekiau, Jalan Lamunin, Kampong Kiudang TE1143</p>
+      <p>[Phone] | [Email]</p>
+    </div>
+    <div>
+      <strong>Hours</strong>
+      <p>Mon-Fri: [hours]</p>
+      <p>Sat-Sun: By appointment</p>
+    </div>
+    <div>
+      <strong>Quick links</strong>
+      <ul>
+        <li><a href="animals.html">Animals</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="buyer-login.html">Buyer Login</a></li>
+      </ul>
+    </div>
+    <div>
+      <strong>Follow</strong>
+      <p>[Social] [Social] [Social]</p>
+    </div>
+    <p class="footer-bottom">&copy; 2026 KAZNISAH FARMING | <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Accessibility</a></p>
+  </footer>
+
+  <!-- JavaScript -->
+</body>
+</html>
