@@ -38,12 +38,7 @@
         <div><p class="eyebrow">HERD MANAGEMENT</p><h1>Ranch overview</h1><p>[Day, Date] | Last synced [Time]</p></div>
         <a class="btn" href="animal-records.html">+ Add Animal</a>
       </div>
-      <div class="metric-grid">
-        <div class="metric"><span>Total herd</span><strong>248</strong><small>Across 7 species</small><a href="#">View details</a></div>
-        <div class="metric"><span>Cattle</span><strong>086</strong><small>+ 4 this month</small><a href="#">View details</a></div>
-        <div class="metric"><span>Goats</span><strong>072</strong><small>+ 8 this month</small><a href="#">View details</a></div>
-        <div class="metric"><span>Other species</span><strong>090</strong><small>View breakdown</small><a href="#">View details</a></div>
-      </div>
+      <div class="metric-grid" id="metric-grid"><p class="loading">Loading...</p></div>
       <div class="dashboard-grid">
         <section class="panel">
           <h2>Priority alerts</h2>
@@ -56,15 +51,7 @@
         </section>
         <section class="panel">
           <h2>Herd by species</h2>
-          <ul class="bar-chart">
-            <li>Cattle <progress value="86" max="100">86</progress></li>
-            <li>Goats <progress value="72" max="100">72</progress></li>
-            <li>Sheep <progress value="35" max="100">35</progress></li>
-            <li>Buffalos <progress value="24" max="100">24</progress></li>
-            <li>Poultry <progress value="18" max="100">18</progress></li>
-            <li>Duck <progress value="13" max="100">13</progress></li>
-            <li>Quail <progress value="10" max="100">10</progress></li>
-          </ul>
+          <ul class="bar-chart" id="species-chart"></ul>
         </section>
         <section class="panel">
           <h2>Recent activity</h2>

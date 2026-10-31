@@ -40,9 +40,9 @@
 
   <main>
     <section class="page-intro compact">
-      <p class="breadcrumb">Our Animals / [Category]</p>
-      <h1>[Animal Category]</h1>
-      <p>[Category description and buying note.]</p>
+      <p class="breadcrumb" id="category-crumb">Our Animals</p>
+      <h1 id="category-title">All animals</h1>
+      <p id="category-desc"></p>
     </section>
 
     <nav class="category-nav" aria-label="Animal categories">
@@ -56,34 +56,13 @@
       </ul>
     </nav>
 
-    <section id="featured-in-category">
+    <section id="featured-in-category" hidden>
       <h2>Featured in this category</h2>
-      <div class="card-grid two">
-      <article class="card featured">
-        <span class="feature-flag">Featured</span>
-        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
-        <span class="status">Available</span>
-        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
-        <h3>[Animal Name / ID]</h3>
-        <p>[Breed] | [Age] | [Sex]</p>
-        <p><strong>B$X,XXX / Inquire</strong></p>
-        <a href="animal-detail.html">View details</a>
-      </article>
-      <article class="card featured">
-        <span class="feature-flag">Featured</span>
-        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
-        <span class="status">Available</span>
-        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
-        <h3>[Animal Name / ID]</h3>
-        <p>[Breed] | [Age] | [Sex]</p>
-        <p><strong>B$X,XXX / Inquire</strong></p>
-        <a href="animal-detail.html">View details</a>
-      </article>
-      </div>
+      <div class="card-grid two" id="featured-list"></div>
     </section>
 
     <section id="all-animals">
-      <h2>All [category] <span>(24)</span></h2>
+      <h2>All <span id="list-title-text">animals</span> <span id="result-count"></span></h2>
 
       <form class="filter-bar" id="animal-filters" aria-label="Filter and sort animals">
         <label for="f-species">Species</label>
@@ -99,67 +78,12 @@
         <label for="f-availability">Availability</label>
         <select id="f-availability" name="availability"><option value="">All</option><option>Available</option><option>Reserved</option></select>
         <label for="f-sort">Sort</label>
-        <select id="f-sort" name="sort"><option>Newest</option><option>Price: low to high</option><option>Price: high to low</option></select>
+        <select id="f-sort" name="sort"><option value="newest">Newest</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option></select>
         <button type="reset" class="text-link">Clear all</button>
       </form>
 
-      <!-- Cards are shown here by js/animals.js later. Copy a card a few times for layout. -->
-      <div class="card-grid three" id="animal-list">
-      <article class="card">
-        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
-        <span class="status">Available</span>
-        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
-        <h3>[Animal Name / ID]</h3>
-        <p>[Breed] | [Age] | [Sex]</p>
-        <p><strong>B$X,XXX / Inquire</strong></p>
-        <a href="animal-detail.html">View details</a>
-      </article>
-      <article class="card">
-        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
-        <span class="status">Available</span>
-        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
-        <h3>[Animal Name / ID]</h3>
-        <p>[Breed] | [Age] | [Sex]</p>
-        <p><strong>B$X,XXX / Inquire</strong></p>
-        <a href="animal-detail.html">View details</a>
-      </article>
-      <article class="card">
-        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
-        <span class="status">Available</span>
-        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
-        <h3>[Animal Name / ID]</h3>
-        <p>[Breed] | [Age] | [Sex]</p>
-        <p><strong>B$X,XXX / Inquire</strong></p>
-        <a href="animal-detail.html">View details</a>
-      </article>
-      <article class="card">
-        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
-        <span class="status">Available</span>
-        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
-        <h3>[Animal Name / ID]</h3>
-        <p>[Breed] | [Age] | [Sex]</p>
-        <p><strong>B$X,XXX / Inquire</strong></p>
-        <a href="animal-detail.html">View details</a>
-      </article>
-      <article class="card">
-        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
-        <span class="status">Available</span>
-        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
-        <h3>[Animal Name / ID]</h3>
-        <p>[Breed] | [Age] | [Sex]</p>
-        <p><strong>B$X,XXX / Inquire</strong></p>
-        <a href="animal-detail.html">View details</a>
-      </article>
-      <article class="card">
-        <img src="../assets/images/placeholder.svg" alt="[Animal name]">
-        <span class="status">Available</span>
-        <button type="button" class="save-btn" aria-label="Save animal">Save</button>
-        <h3>[Animal Name / ID]</h3>
-        <p>[Breed] | [Age] | [Sex]</p>
-        <p><strong>B$X,XXX / Inquire</strong></p>
-        <a href="animal-detail.html">View details</a>
-      </article>
-      </div>
+      <!-- Cards are rendered here by js/animals.js later. -->
+      <div class="card-grid three" id="animal-list"><p class="loading">Loading animals...</p></div>
       <button type="button" class="btn secondary" id="load-more">Load more</button>
     </section>
   </main>

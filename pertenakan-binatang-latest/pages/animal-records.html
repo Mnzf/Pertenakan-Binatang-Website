@@ -35,7 +35,7 @@
         <button type="button" class="notification">Alerts [3]</button>
       </div>
       <div class="dashboard-heading">
-        <div><p class="eyebrow">HERD MANAGEMENT</p><h1>Animal records</h1><p>248 total records | Updated [Time]</p></div>
+        <div><p class="eyebrow">HERD MANAGEMENT</p><h1>Animal records</h1><p id="records-count">Loading...</p></div>
         <div><button type="button" class="btn secondary">Export</button> <button type="button" class="btn" id="add-animal-btn">+ Add Animal</button></div>
       </div>
       <section class="panel record-panel">
@@ -48,26 +48,8 @@
           <label for="r-location">Location</label><select id="r-location"><option value="">All</option></select>
           <button type="reset" class="text-link">Clear</button>
         </form>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>ID / Tag</th><th>Species</th><th>Breed</th><th>Sex</th><th>DOB</th><th>Status</th><th>Location</th></tr></thead>
-            <tbody>
-            <tr><td><a href="animal-profile.html">[0001]</a></td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td><span class="status">Active</span></td></tr>
-            <tr><td><a href="animal-profile.html">[0002]</a></td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td><span class="status">Active</span></td></tr>
-            <tr><td><a href="animal-profile.html">[0003]</a></td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td><span class="status">Active</span></td></tr>
-            <tr><td><a href="animal-profile.html">[0004]</a></td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td><span class="status">Active</span></td></tr>
-            <tr><td><a href="animal-profile.html">[0005]</a></td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td><span class="status">Active</span></td></tr>
-            <tr><td><a href="animal-profile.html">[0006]</a></td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td><span class="status">Active</span></td></tr>
-            <tr><td><a href="animal-profile.html">[0007]</a></td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td><span class="status">Active</span></td></tr>
-            <tr><td><a href="animal-profile.html">[0008]</a></td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td><span class="status">Active</span></td></tr>
-            <tr><td><a href="animal-profile.html">[0009]</a></td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td>[Value]</td><td><span class="status">Active</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <nav class="pagination" aria-label="Pagination">
-          <span>Showing 1-25 of 248</span>
-          <button type="button">Prev</button><button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">Next</button>
-        </nav>
+        <div class="table-wrap" id="records-table"><p class="loading">Loading records...</p></div>
+        <nav class="pagination" id="records-pagination" aria-label="Pagination"></nav>
       </section>
     </div>
   </div>

@@ -37,25 +37,17 @@
         <a class="btn" href="animals.html">Browse Animals</a>
       </div>
       <div class="metric-grid">
-        <div class="metric"><span>Saved animals</span><strong>06</strong><a href="#">View details</a></div>
-        <div class="metric"><span>Open inquiries</span><strong>02</strong><a href="#">View details</a></div>
+        <div class="metric"><span>Saved animals</span><strong id="metric-saved">0</strong><a href="#">View details</a></div>
+        <div class="metric"><span>Open inquiries</span><strong id="metric-inquiries">0</strong><a href="#">View details</a></div>
       </div>
       <div class="dashboard-grid">
         <section class="panel" id="saved">
           <h2>Saved animals</h2>
-          <ul class="saved-list">
-            <li><img src="../assets/images/placeholder.svg" alt="[Animal]"><span><strong>[Animal Name / ID]</strong><small>[Breed] | [Status]</small></span><a href="animal-detail.html">View</a></li>
-            <li><img src="../assets/images/placeholder.svg" alt="[Animal]"><span><strong>[Animal Name / ID]</strong><small>[Breed] | [Status]</small></span><a href="animal-detail.html">View</a></li>
-            <li><img src="../assets/images/placeholder.svg" alt="[Animal]"><span><strong>[Animal Name / ID]</strong><small>[Breed] | [Status]</small></span><a href="animal-detail.html">View</a></li>
-          </ul>
+          <ul class="saved-list" id="saved-list"><li class="loading">Loading...</li></ul>
         </section>
         <section class="panel" id="inquiries">
           <h2>Inquiry status</h2>
-          <ul class="status-list">
-            <li>[ID 000] - Awaiting response</li>
-            <li>[ID 000] - Ranch replied</li>
-            <li>[ID 000] - Closed</li>
-          </ul>
+          <ul class="status-list" id="inquiry-list"><li class="loading">Loading...</li></ul>
         </section>
         <section class="panel" id="messages">
           <h2>Messages</h2>
