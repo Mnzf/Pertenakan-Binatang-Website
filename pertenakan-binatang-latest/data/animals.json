@@ -1,4 +1,801 @@
 [
-  { "id": "A001", "name": "[Animal Name]", "species": "cattle", "breed": "[Breed]", "sex": "female", "ageMonths": 24, "price": 2500, "status": "available", "featured": true, "image": "assets/images/placeholder.svg" },
-  { "id": "A002", "name": "[Animal Name]", "species": "goats", "breed": "[Breed]", "sex": "male", "ageMonths": 12, "price": 600, "status": "available", "featured": false, "image": "assets/images/placeholder.svg" }
+  {
+    "id": "A001",
+    "tag": "KF-001",
+    "name": "Bella",
+    "species": "cattle",
+    "breed": "Brahman",
+    "sex": "female",
+    "dob": "2023-02-14",
+    "price": 3200,
+    "status": "available",
+    "featured": true,
+    "forSale": true,
+    "location": "Paddock A",
+    "weightKg": 410,
+    "registration": "[Registration no.]",
+    "description": "[Description to be confirmed by the farm: temperament, traits, intended use.]",
+    "sire": "[Sire name / ID]",
+    "dam": "[Dam name / ID]",
+    "images": [
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg"
+    ],
+    "health": {
+      "vaccinated": true,
+      "lastCheck": "2026-09-15",
+      "certification": "[Value]"
+    },
+    "weightHistory": [
+      {
+        "date": "2026-06-01",
+        "kg": 369.0
+      },
+      {
+        "date": "2026-07-15",
+        "kg": 385.4
+      },
+      {
+        "date": "2026-08-30",
+        "kg": 397.7
+      },
+      {
+        "date": "2026-10-10",
+        "kg": 410
+      }
+    ],
+    "healthLog": [
+      {
+        "date": "2026-09-15",
+        "type": "Vaccination",
+        "treatment": "[Vaccine name]",
+        "by": "[Staff name]",
+        "status": "Done"
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Health check",
+        "treatment": "Routine check",
+        "by": "[Staff name]",
+        "status": "Done"
+      }
+    ],
+    "breeding": [
+      {
+        "date": "2026-03-12",
+        "event": "Mating",
+        "pairedWith": "KF-002",
+        "outcome": "Pregnant"
+      }
+    ],
+    "notes": "[Operational notes about temperament, handling, feeding or care.]",
+    "createdAt": "2026-10-01"
+  },
+  {
+    "id": "A002",
+    "tag": "KF-002",
+    "name": "Duke",
+    "species": "cattle",
+    "breed": "Limousin",
+    "sex": "male",
+    "dob": "2022-06-03",
+    "price": 4100,
+    "status": "available",
+    "featured": false,
+    "forSale": true,
+    "location": "Paddock A",
+    "weightKg": 520,
+    "registration": "[Registration no.]",
+    "description": "[Description to be confirmed by the farm: temperament, traits, intended use.]",
+    "sire": "[Sire name / ID]",
+    "dam": "[Dam name / ID]",
+    "images": [
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg"
+    ],
+    "health": {
+      "vaccinated": true,
+      "lastCheck": "2026-09-15",
+      "certification": "[Value]"
+    },
+    "weightHistory": [
+      {
+        "date": "2026-06-01",
+        "kg": 468.0
+      },
+      {
+        "date": "2026-07-15",
+        "kg": 488.8
+      },
+      {
+        "date": "2026-08-30",
+        "kg": 504.4
+      },
+      {
+        "date": "2026-10-10",
+        "kg": 520
+      }
+    ],
+    "healthLog": [
+      {
+        "date": "2026-09-15",
+        "type": "Vaccination",
+        "treatment": "[Vaccine name]",
+        "by": "[Staff name]",
+        "status": "Done"
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Health check",
+        "treatment": "Routine check",
+        "by": "[Staff name]",
+        "status": "Done"
+      }
+    ],
+    "breeding": [],
+    "notes": "[Operational notes about temperament, handling, feeding or care.]",
+    "createdAt": "2026-10-02"
+  },
+  {
+    "id": "A003",
+    "tag": "KF-003",
+    "name": "Maple",
+    "species": "cattle",
+    "breed": "Brahman",
+    "sex": "female",
+    "dob": "2024-05-21",
+    "price": null,
+    "status": "reserved",
+    "featured": false,
+    "forSale": true,
+    "location": "Paddock B",
+    "weightKg": 260,
+    "registration": "[Registration no.]",
+    "description": "[Description to be confirmed by the farm: temperament, traits, intended use.]",
+    "sire": "[Sire name / ID]",
+    "dam": "[Dam name / ID]",
+    "images": [
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg"
+    ],
+    "health": {
+      "vaccinated": true,
+      "lastCheck": "2026-09-15",
+      "certification": "[Value]"
+    },
+    "weightHistory": [
+      {
+        "date": "2026-06-01",
+        "kg": 234.0
+      },
+      {
+        "date": "2026-07-15",
+        "kg": 244.4
+      },
+      {
+        "date": "2026-08-30",
+        "kg": 252.2
+      },
+      {
+        "date": "2026-10-10",
+        "kg": 260
+      }
+    ],
+    "healthLog": [
+      {
+        "date": "2026-09-15",
+        "type": "Vaccination",
+        "treatment": "[Vaccine name]",
+        "by": "[Staff name]",
+        "status": "Done"
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Health check",
+        "treatment": "Routine check",
+        "by": "[Staff name]",
+        "status": "Done"
+      }
+    ],
+    "breeding": [],
+    "notes": "[Operational notes about temperament, handling, feeding or care.]",
+    "createdAt": "2026-10-03"
+  },
+  {
+    "id": "A004",
+    "tag": "KF-004",
+    "name": "Rocky",
+    "species": "bulls",
+    "breed": "Brahman",
+    "sex": "male",
+    "dob": "2021-01-09",
+    "price": 6500,
+    "status": "available",
+    "featured": true,
+    "forSale": true,
+    "location": "Bull pen",
+    "weightKg": 780,
+    "registration": "[Registration no.]",
+    "description": "[Description to be confirmed by the farm: temperament, traits, intended use.]",
+    "sire": "[Sire name / ID]",
+    "dam": "[Dam name / ID]",
+    "images": [
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg"
+    ],
+    "health": {
+      "vaccinated": true,
+      "lastCheck": "2026-09-15",
+      "certification": "[Value]"
+    },
+    "weightHistory": [
+      {
+        "date": "2026-06-01",
+        "kg": 702.0
+      },
+      {
+        "date": "2026-07-15",
+        "kg": 733.2
+      },
+      {
+        "date": "2026-08-30",
+        "kg": 756.6
+      },
+      {
+        "date": "2026-10-10",
+        "kg": 780
+      }
+    ],
+    "healthLog": [
+      {
+        "date": "2026-09-15",
+        "type": "Vaccination",
+        "treatment": "[Vaccine name]",
+        "by": "[Staff name]",
+        "status": "Done"
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Health check",
+        "treatment": "Routine check",
+        "by": "[Staff name]",
+        "status": "Done"
+      }
+    ],
+    "breeding": [],
+    "notes": "[Operational notes about temperament, handling, feeding or care.]",
+    "createdAt": "2026-10-04"
+  },
+  {
+    "id": "A005",
+    "tag": "KF-005",
+    "name": "Titan",
+    "species": "bulls",
+    "breed": "Santa Gertrudis",
+    "sex": "male",
+    "dob": "2020-09-30",
+    "price": 7200,
+    "status": "sold",
+    "featured": false,
+    "forSale": true,
+    "location": "Bull pen",
+    "weightKg": 820,
+    "registration": "[Registration no.]",
+    "description": "[Description to be confirmed by the farm: temperament, traits, intended use.]",
+    "sire": "[Sire name / ID]",
+    "dam": "[Dam name / ID]",
+    "images": [
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg"
+    ],
+    "health": {
+      "vaccinated": true,
+      "lastCheck": "2026-09-15",
+      "certification": "[Value]"
+    },
+    "weightHistory": [
+      {
+        "date": "2026-06-01",
+        "kg": 738.0
+      },
+      {
+        "date": "2026-07-15",
+        "kg": 770.8
+      },
+      {
+        "date": "2026-08-30",
+        "kg": 795.4
+      },
+      {
+        "date": "2026-10-10",
+        "kg": 820
+      }
+    ],
+    "healthLog": [
+      {
+        "date": "2026-09-15",
+        "type": "Vaccination",
+        "treatment": "[Vaccine name]",
+        "by": "[Staff name]",
+        "status": "Done"
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Health check",
+        "treatment": "Routine check",
+        "by": "[Staff name]",
+        "status": "Done"
+      }
+    ],
+    "breeding": [],
+    "notes": "[Operational notes about temperament, handling, feeding or care.]",
+    "createdAt": "2026-10-05"
+  },
+  {
+    "id": "A006",
+    "tag": "KF-006",
+    "name": "Lily",
+    "species": "goats",
+    "breed": "Boer",
+    "sex": "female",
+    "dob": "2024-08-11",
+    "price": 450,
+    "status": "available",
+    "featured": true,
+    "forSale": true,
+    "location": "Goat shed 1",
+    "weightKg": 42,
+    "registration": "[Registration no.]",
+    "description": "[Description to be confirmed by the farm: temperament, traits, intended use.]",
+    "sire": "[Sire name / ID]",
+    "dam": "[Dam name / ID]",
+    "images": [
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg"
+    ],
+    "health": {
+      "vaccinated": true,
+      "lastCheck": "2026-09-15",
+      "certification": "[Value]"
+    },
+    "weightHistory": [
+      {
+        "date": "2026-06-01",
+        "kg": 37.8
+      },
+      {
+        "date": "2026-07-15",
+        "kg": 39.5
+      },
+      {
+        "date": "2026-08-30",
+        "kg": 40.7
+      },
+      {
+        "date": "2026-10-10",
+        "kg": 42
+      }
+    ],
+    "healthLog": [
+      {
+        "date": "2026-09-15",
+        "type": "Vaccination",
+        "treatment": "[Vaccine name]",
+        "by": "[Staff name]",
+        "status": "Done"
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Health check",
+        "treatment": "Routine check",
+        "by": "[Staff name]",
+        "status": "Done"
+      }
+    ],
+    "breeding": [],
+    "notes": "[Operational notes about temperament, handling, feeding or care.]",
+    "createdAt": "2026-10-06"
+  },
+  {
+    "id": "A007",
+    "tag": "KF-007",
+    "name": "Hana",
+    "species": "goats",
+    "breed": "Jamnapari",
+    "sex": "female",
+    "dob": "2023-11-02",
+    "price": 520,
+    "status": "available",
+    "featured": false,
+    "forSale": true,
+    "location": "Goat shed 1",
+    "weightKg": 48,
+    "registration": "[Registration no.]",
+    "description": "[Description to be confirmed by the farm: temperament, traits, intended use.]",
+    "sire": "[Sire name / ID]",
+    "dam": "[Dam name / ID]",
+    "images": [
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg"
+    ],
+    "health": {
+      "vaccinated": true,
+      "lastCheck": "2026-09-15",
+      "certification": "[Value]"
+    },
+    "weightHistory": [
+      {
+        "date": "2026-06-01",
+        "kg": 43.2
+      },
+      {
+        "date": "2026-07-15",
+        "kg": 45.1
+      },
+      {
+        "date": "2026-08-30",
+        "kg": 46.6
+      },
+      {
+        "date": "2026-10-10",
+        "kg": 48
+      }
+    ],
+    "healthLog": [
+      {
+        "date": "2026-09-15",
+        "type": "Vaccination",
+        "treatment": "[Vaccine name]",
+        "by": "[Staff name]",
+        "status": "Done"
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Health check",
+        "treatment": "Routine check",
+        "by": "[Staff name]",
+        "status": "Done"
+      }
+    ],
+    "breeding": [],
+    "notes": "[Operational notes about temperament, handling, feeding or care.]",
+    "createdAt": "2026-10-07"
+  },
+  {
+    "id": "A008",
+    "tag": "KF-008",
+    "name": "Snowy",
+    "species": "sheep",
+    "breed": "Dorper",
+    "sex": "female",
+    "dob": "2024-02-17",
+    "price": 380,
+    "status": "available",
+    "featured": false,
+    "forSale": true,
+    "location": "Sheep pen",
+    "weightKg": 55,
+    "registration": "[Registration no.]",
+    "description": "[Description to be confirmed by the farm: temperament, traits, intended use.]",
+    "sire": "[Sire name / ID]",
+    "dam": "[Dam name / ID]",
+    "images": [
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg"
+    ],
+    "health": {
+      "vaccinated": true,
+      "lastCheck": "2026-09-15",
+      "certification": "[Value]"
+    },
+    "weightHistory": [
+      {
+        "date": "2026-06-01",
+        "kg": 49.5
+      },
+      {
+        "date": "2026-07-15",
+        "kg": 51.7
+      },
+      {
+        "date": "2026-08-30",
+        "kg": 53.4
+      },
+      {
+        "date": "2026-10-10",
+        "kg": 55
+      }
+    ],
+    "healthLog": [
+      {
+        "date": "2026-09-15",
+        "type": "Vaccination",
+        "treatment": "[Vaccine name]",
+        "by": "[Staff name]",
+        "status": "Done"
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Health check",
+        "treatment": "Routine check",
+        "by": "[Staff name]",
+        "status": "Done"
+      }
+    ],
+    "breeding": [],
+    "notes": "[Operational notes about temperament, handling, feeding or care.]",
+    "createdAt": "2026-10-08"
+  },
+  {
+    "id": "A009",
+    "tag": "KF-009",
+    "name": "Ram-01",
+    "species": "sheep",
+    "breed": "Barbados Blackbelly",
+    "sex": "male",
+    "dob": "2023-07-25",
+    "price": 420,
+    "status": "reserved",
+    "featured": false,
+    "forSale": true,
+    "location": "Sheep pen",
+    "weightKg": 62,
+    "registration": "[Registration no.]",
+    "description": "[Description to be confirmed by the farm: temperament, traits, intended use.]",
+    "sire": "[Sire name / ID]",
+    "dam": "[Dam name / ID]",
+    "images": [
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg"
+    ],
+    "health": {
+      "vaccinated": true,
+      "lastCheck": "2026-09-15",
+      "certification": "[Value]"
+    },
+    "weightHistory": [
+      {
+        "date": "2026-06-01",
+        "kg": 55.8
+      },
+      {
+        "date": "2026-07-15",
+        "kg": 58.3
+      },
+      {
+        "date": "2026-08-30",
+        "kg": 60.1
+      },
+      {
+        "date": "2026-10-10",
+        "kg": 62
+      }
+    ],
+    "healthLog": [
+      {
+        "date": "2026-09-15",
+        "type": "Vaccination",
+        "treatment": "[Vaccine name]",
+        "by": "[Staff name]",
+        "status": "Done"
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Health check",
+        "treatment": "Routine check",
+        "by": "[Staff name]",
+        "status": "Done"
+      }
+    ],
+    "breeding": [],
+    "notes": "[Operational notes about temperament, handling, feeding or care.]",
+    "createdAt": "2026-10-09"
+  },
+  {
+    "id": "A010",
+    "tag": "KF-010",
+    "name": "Hen group A",
+    "species": "poultry",
+    "breed": "Kampung chicken",
+    "sex": "mixed",
+    "dob": "2025-03-01",
+    "price": 15,
+    "status": "available",
+    "featured": false,
+    "forSale": true,
+    "location": "Poultry house",
+    "weightKg": 2,
+    "registration": "[Registration no.]",
+    "description": "[Description to be confirmed by the farm: temperament, traits, intended use.]",
+    "sire": "[Sire name / ID]",
+    "dam": "[Dam name / ID]",
+    "images": [
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg"
+    ],
+    "health": {
+      "vaccinated": true,
+      "lastCheck": "2026-09-15",
+      "certification": "[Value]"
+    },
+    "weightHistory": [
+      {
+        "date": "2026-06-01",
+        "kg": 1.8
+      },
+      {
+        "date": "2026-07-15",
+        "kg": 1.9
+      },
+      {
+        "date": "2026-08-30",
+        "kg": 1.9
+      },
+      {
+        "date": "2026-10-10",
+        "kg": 2
+      }
+    ],
+    "healthLog": [
+      {
+        "date": "2026-09-15",
+        "type": "Vaccination",
+        "treatment": "[Vaccine name]",
+        "by": "[Staff name]",
+        "status": "Done"
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Health check",
+        "treatment": "Routine check",
+        "by": "[Staff name]",
+        "status": "Done"
+      }
+    ],
+    "breeding": [],
+    "notes": "[Operational notes about temperament, handling, feeding or care.]",
+    "createdAt": "2026-10-10"
+  },
+  {
+    "id": "A011",
+    "tag": "KF-011",
+    "name": "Duck group B",
+    "species": "poultry",
+    "breed": "Muscovy duck",
+    "sex": "mixed",
+    "dob": "2025-04-12",
+    "price": 25,
+    "status": "available",
+    "featured": false,
+    "forSale": true,
+    "location": "Pond area",
+    "weightKg": 3,
+    "registration": "[Registration no.]",
+    "description": "[Description to be confirmed by the farm: temperament, traits, intended use.]",
+    "sire": "[Sire name / ID]",
+    "dam": "[Dam name / ID]",
+    "images": [
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg"
+    ],
+    "health": {
+      "vaccinated": true,
+      "lastCheck": "2026-09-15",
+      "certification": "[Value]"
+    },
+    "weightHistory": [
+      {
+        "date": "2026-06-01",
+        "kg": 2.7
+      },
+      {
+        "date": "2026-07-15",
+        "kg": 2.8
+      },
+      {
+        "date": "2026-08-30",
+        "kg": 2.9
+      },
+      {
+        "date": "2026-10-10",
+        "kg": 3
+      }
+    ],
+    "healthLog": [
+      {
+        "date": "2026-09-15",
+        "type": "Vaccination",
+        "treatment": "[Vaccine name]",
+        "by": "[Staff name]",
+        "status": "Done"
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Health check",
+        "treatment": "Routine check",
+        "by": "[Staff name]",
+        "status": "Done"
+      }
+    ],
+    "breeding": [],
+    "notes": "[Operational notes about temperament, handling, feeding or care.]",
+    "createdAt": "2026-10-11"
+  },
+  {
+    "id": "A012",
+    "tag": "KF-012",
+    "name": "Star",
+    "species": "horses",
+    "breed": "Arabian cross",
+    "sex": "male",
+    "dob": "2019-04-18",
+    "price": null,
+    "status": "available",
+    "featured": false,
+    "forSale": false,
+    "location": "Stable",
+    "weightKg": 430,
+    "registration": "[Registration no.]",
+    "description": "[Description to be confirmed by the farm: temperament, traits, intended use.]",
+    "sire": "[Sire name / ID]",
+    "dam": "[Dam name / ID]",
+    "images": [
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg",
+      "assets/images/placeholder.svg"
+    ],
+    "health": {
+      "vaccinated": true,
+      "lastCheck": "2026-09-15",
+      "certification": "[Value]"
+    },
+    "weightHistory": [
+      {
+        "date": "2026-06-01",
+        "kg": 387.0
+      },
+      {
+        "date": "2026-07-15",
+        "kg": 404.2
+      },
+      {
+        "date": "2026-08-30",
+        "kg": 417.1
+      },
+      {
+        "date": "2026-10-10",
+        "kg": 430
+      }
+    ],
+    "healthLog": [
+      {
+        "date": "2026-09-15",
+        "type": "Vaccination",
+        "treatment": "[Vaccine name]",
+        "by": "[Staff name]",
+        "status": "Done"
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Health check",
+        "treatment": "Routine check",
+        "by": "[Staff name]",
+        "status": "Done"
+      }
+    ],
+    "breeding": [],
+    "notes": "[Operational notes about temperament, handling, feeding or care.]",
+    "createdAt": "2026-10-12"
+  }
 ]

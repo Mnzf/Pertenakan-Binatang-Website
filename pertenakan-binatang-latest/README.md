@@ -35,3 +35,13 @@ Staff (herd management):
 - No inline `style=""`. Colours, fonts and spacing are CSS variables in `css/global.css`; use `var(--color-gold)` etc.
 - Do not rename form `id`s or `name`s without telling the team (JS and Firebase use them).
 - Work on your own branch, open a Pull Request, get a review before merging to `main`.
+
+## Phase Javascript: JavaScript (how it fits together)
+
+Open the site with the **Live Server** extension. The JS loads data with `fetch()`, which does not work when you double-click a file (`file://`).
+
+### Phase Javascript rules
+- Pages call `data.js`, `storage.js` and `auth.js`. Never call `localStorage` or `fetch` directly in a page script.
+- Escape every value from data with `escapeHtml()` before putting it in `innerHTML`.
+- Keep one page script per page; share code by putting it in a file in `js/`.
+- Phase 4 TODOs are marked `TODO(Phase 4)` or `PHASE 4` in the code. Search for them.

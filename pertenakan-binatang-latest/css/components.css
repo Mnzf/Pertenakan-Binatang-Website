@@ -228,3 +228,20 @@ tbody tr:hover { background: var(--color-highlight); }
   .site-footer { grid-template-columns: 1fr; padding: 28px var(--space-3); }
   .dashboard-heading { flex-direction: column; align-items: flex-start; }
 }
+.main-nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
+.category-nav a[aria-current="true"] { background: var(--color-gold); color: var(--color-ink); font-weight: 600; }
+.save-btn[aria-pressed="true"] { background: var(--color-dark); color: var(--color-white); }
+.status-available { background: #d7e8c3; }
+.status-reserved  { background: #f4d99b; }
+.status-sold      { background: #e2b9b9; }
+.empty-state, .error-state, .loading { padding: var(--space-3); background: var(--color-panel); border: 1px dashed var(--color-dark); }
+.error-state { border-color: var(--color-danger); }
+.form-success { color: var(--color-success); font-weight: 600; }
+[aria-invalid="true"] { border: 2px solid var(--color-danger) !important; }
+.thumb-btn { padding: 0; border: 0; background: none; }
+.thumb-btn[aria-current="true"] img { outline: 3px solid var(--color-dark); }
+.btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
+.sparkline { width: 100%; height: 150px; background: var(--color-highlight); border: 1px solid var(--color-border); }
+.sparkline polyline { fill: none; stroke: var(--color-brown); stroke-width: 3; vector-effect: non-scaling-stroke; }
+.sparkline-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--color-muted); }
+
