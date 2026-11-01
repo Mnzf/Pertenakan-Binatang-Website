@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase connection test (developers only)</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <!-- DEVELOPER TOOL: checks that Firebase is set up. Not part of the public site.
+       Delete the /dev folder before the final submission. -->
+  <main>
+    <h1>Firebase connection test</h1>
+
+    <section class="panel">
+      <h2>1. Config</h2>
+      <p id="t-config" role="status">Checking...</p>
+    </section>
+
+    <section class="panel">
+      <h2>2. Authentication</h2>
+      <p id="t-auth-state" role="status">Not checked yet.</p>
+      <form id="t-auth-form">
+        <label for="t-email">Test email</label>
+        <input type="email" id="t-email" autocomplete="email" required>
+        <label for="t-password">Test password (min 6 characters)</label>
+        <input type="password" id="t-password" autocomplete="current-password" required minlength="6">
+        <p id="t-auth-msg" role="alert"></p>
+        <button type="button" class="btn" id="t-register">Create test account</button>
+        <button type="submit" class="btn secondary">Sign in</button>
+        <button type="button" class="btn secondary" id="t-signout">Sign out</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>3. Firestore</h2>
+      <p id="t-db" role="status">Not checked yet.</p>
+      <button type="button" class="btn" id="t-db-btn">Try reading the animals collection</button>
+    </section>
+  </main>
+
+  <script type="module">
+    import { isConfigured, auth, db, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
+             onAuthStateChanged, collection, getDocs, query, limit } from '../js/firebase.js';
+
+    const $ = (id) => document.getElementById(id);
+
+    if (!isConfigured) {
+      $('t-config').textContent = 'NOT CONFIGURED. Paste your Firebase settings into js/firebase-config.js, then refresh.';
+    } else {
+      $('t-config').textContent = 'Config found. Project: ' + auth.app.options.projectId;
+
+      onAuthStateChanged(auth, (user) => {
+        $('t-auth-state').textContent = user ? 'Signed in as ' + user.email + ' (uid ' + user.uid + ')' : 'Nobody is signed in.';
+      });
+
+      const creds = () => [$('t-email').value.trim(), $('t-password').value];
+      const say = (text) => { $('t-auth-msg').textContent = text; };
+
+      $('t-register').addEventListener('click', async () => {
+        try { await createUserWithEmailAndPassword(auth, ...creds()); say(''); }
+        catch (e) { say(e.code + ': ' + e.message); }
+      });
+      $('t-auth-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        try { await signInWithEmailAndPassword(auth, ...creds()); say(''); }
+        catch (e2) { say(e2.code + ': ' + e2.message); }
+      });
+      $('t-signout').addEventListener('click', () => signOut(auth));
+
+      $('t-db-btn').addEventListener('click', async () => {
+        try {
+          const snap = await getDocs(query(collection(db, 'animals'), limit(1)));
+          $('t-db').textContent = 'Connected. The animals collection has ' + (snap.empty ? 'no documents yet.' : 'documents.');
+        } catch (e) {
+          $('t-db').textContent = (e.code === 'permission-denied')
+            ? 'Connected, but the rules blocked this read (permission-denied). That is normal until the rules are published and the data is imported.'
+            : e.code + ': ' + e.message;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
