@@ -1,18 +1,19 @@
 // pages/buyer-dashboard.js - saved animals + inquiry status
 import { requireRole } from '../auth.js';
-import { getAnimals } from '../data.js';
-import { getSavedIds, getInquiries } from '../storage.js';
+import { getPublicAnimals } from '../data.js';
+import { getMyInquiries } from '../inquiries.js';
 import { detailUrl, imageUrl } from '../render.js';
 import { $, escapeHtml, capitalize, formatDate } from '../utils.js';
 
-if (requireRole('buyer')) {
+const user = await requireRole('buyer');
+if (user) {
+  $('#welcome-name').textContent = user.name.split(' ')[0];
   try {
-    const animals = await getAnimals();
-    const saved = getSavedIds().map((id) => animals.find((a) => a.id === id)).filter(Boolean);
-    const inquiries = getInquiries();
+    const [animals, inquiries] = await Promise.all([getPublicAnimals(), getMyInquiries(user.uid)]);
+    const saved = user.saved.map((id) => animals.find((a) => a.id === id)).filter(Boolean);
 
     $('#metric-saved').textContent = String(saved.length).padStart(2, '0');
-    $('#metric-inquiries').textContent = String(inquiries.length).padStart(2, '0');
+    $('#metric-inquiries').textContent = String(inquiries.filter((q) => q.status !== 'Closed').length).padStart(2, '0');
 
     $('#saved-list').innerHTML = saved.length
       ? saved.map((a) => `
@@ -24,10 +25,10 @@ if (requireRole('buyer')) {
       : '<li>You have not saved any animals yet.</li>';
 
     $('#inquiry-list').innerHTML = inquiries.length
-      ? inquiries.map((q) => `<li>${escapeHtml(q.ref)} | ${escapeHtml(q.animalName)} | ${escapeHtml(q.status)} <small>${escapeHtml(formatDate(q.createdAt))}</small></li>`).join('')
-      : '<li>No inquiries yet.</li>';
+      ? inquiries.map((q) => `<li>${escapeHtml(q.ref)} | ${escapeHtml(q.animalName)} | <strong>${escapeHtml(q.status)}</strong> <small>${escapeHtml(formatDate(q.createdAt))}</small></li>`).join('')
+      : '<li>No inquiries yet. Open an animal and choose "Send an Inquiry to Buy".</li>';
   } catch (error) {
     console.error(error);
-    $('#saved-list').innerHTML = '<li class="error-state" role="alert">Could not load your saved animals.</li>';
+    $('#saved-list').innerHTML = '<li class="error-state" role="alert">Could not load your account data. Please refresh.</li>';
   }
 }

@@ -1,12 +1,14 @@
 // pages/staff-dashboard.js - herd overview numbers calculated from the data
 import { requireRole } from '../auth.js';
 import { getAnimals } from '../data.js';
+import { getAllInquiries } from '../inquiries.js';
 import { CATEGORIES } from '../config.js';
 import { $, escapeHtml } from '../utils.js';
 
-if (requireRole('staff')) {
+if (await requireRole('staff')) {
   try {
     const animals = await getAnimals();
+    const inquiries = await getAllInquiries().catch(() => []);
     const count = (fn) => animals.filter(fn).length;
     const metric = (label, value, note) =>
       `<div class="metric"><span>${escapeHtml(label)}</span><strong>${value}</strong><small>${escapeHtml(note)}</small></div>`;
@@ -14,6 +16,7 @@ if (requireRole('staff')) {
     $('#metric-grid').innerHTML = [
       metric('Total herd', animals.length, `Across ${new Set(animals.map((a) => a.species)).size} categories`),
       metric('Listed for sale', count((a) => a.forSale), 'Visible on the website'),
+      metric('New inquiries', inquiries.filter((q) => q.status === 'Submitted').length, 'Waiting for a reply'),
       metric('Reserved', count((a) => a.status === 'reserved'), 'Waiting for the owner'),
       metric('Sold', count((a) => a.status === 'sold'), 'Completed sales'),
     ].join('');

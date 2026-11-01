@@ -1,16 +1,16 @@
-// pages/inquire.js - "Send an inquiry to buy" form
+// pages/inquire.js - "Send an inquiry to buy" (saved in Firestore, collection "inquiries")
 import { getAnimalById } from '../data.js';
-import { addInquiry } from '../storage.js';
+import { authReady, getCurrentUser, authErrorMessage } from '../auth.js';
+import { createInquiry, refFor } from '../inquiries.js';
 import { handleForm } from '../forms.js';
-import { DEMO_MODE } from '../config.js';
-import { getCurrentUser } from '../auth.js';
 import { imageUrl } from '../render.js';
-import { $, getParam, escapeHtml, rootUrl, formatPrice } from '../utils.js';
+import { $, getParam, rootUrl, formatPrice } from '../utils.js';
 
 const form = $('#inquiry-form');
 const animalId = getParam('animal');
 const draftKey = `kf_draft_${animalId}`;
 
+await authReady();
 let animal = null;
 try { animal = animalId ? await getAnimalById(animalId) : null; } catch (error) { console.error(error); }
 
@@ -24,36 +24,43 @@ if (!animal || !animal.forSale || animal.status === 'sold') {
   $('#crumb-animal').href = `${rootUrl('pages/animal-detail.html')}?id=${encodeURIComponent(animal.id)}`;
   $('#cancel-link').href = $('#crumb-animal').href;
 
-  // Keep the draft if the buyer leaves to log in (sessionStorage = this tab only)
+  const loginUrl = `${rootUrl('pages/buyer-login.html')}?next=${encodeURIComponent(location.pathname + location.search)}`;
+  if (!getCurrentUser()) {
+    form.querySelector('[type="submit"]').textContent = 'Log in to send inquiry';
+    $('.panel .eyebrow')?.after(Object.assign(document.createElement('p'), { textContent: 'You will be asked to log in (or create a buyer account) first. Your message is kept.' }));
+  }
+
+  // Keep the draft while the buyer goes to log in (sessionStorage = this browser tab only)
   try {
     const draft = JSON.parse(sessionStorage.getItem(draftKey) ?? '{}');
-    Object.entries(draft).forEach(([name, value]) => { if (form.elements[name] && form.elements[name].type !== 'checkbox') form.elements[name].value = value; });
+    Object.entries(draft).forEach(([name, value]) => { if (form.elements[name]) form.elements[name].value = value; });
   } catch { /* ignore a broken draft */ }
   form.addEventListener('input', () => {
-    try { sessionStorage.setItem(draftKey, JSON.stringify({ contactMethod: form.elements.contactMethod.value, contactTime: form.elements.contactTime.value, message: form.elements.message.value })); } catch { /* storage blocked */ }
+    try {
+      sessionStorage.setItem(draftKey, JSON.stringify({
+        contactMethod: form.elements.contactMethod.value, contactTime: form.elements.contactTime.value, message: form.elements.message.value,
+      }));
+    } catch { /* storage blocked */ }
   });
 
   handleForm(
     form,
     async (data) => {
-      // PHASE 4: if there is no logged-in buyer, send them to the login page with ?next=
-      // and write the inquiry to Firestore (collection "inquiries") instead of storage.js.
-      if (!DEMO_MODE && !getCurrentUser()) {
-        location.href = `${rootUrl('pages/buyer-login.html')}?next=${encodeURIComponent(location.pathname + location.search)}`;
-        return;
+      const buyer = getCurrentUser();
+      if (!buyer) { location.href = loginUrl; return; }
+      if (buyer.role !== 'buyer') throw new Error('Only buyer accounts can send inquiries. Please log in with a buyer account.');
+      try {
+        const id = await createInquiry(buyer, animal, data);
+        sessionStorage.removeItem(draftKey);
+        $('#inquiry-ref').textContent = refFor(id);
+        form.hidden = true;
+        const done = $('#inquiry-confirmation');
+        done.hidden = false;
+        done.querySelector('a')?.focus();
+      } catch (error) {
+        console.error(error);
+        throw new Error(authErrorMessage(error));
       }
-      const ref = `REQ-${Date.now().toString(36).toUpperCase()}`;
-      addInquiry({
-        ref, animalId: animal.id, animalName: animal.name, requestType: data.requestType,
-        contactMethod: data.contactMethod, contactTime: data.contactTime, message: data.message.trim(),
-        status: 'Submitted', createdAt: new Date().toISOString(),
-      });
-      sessionStorage.removeItem(draftKey);
-      $('#inquiry-ref').textContent = ref;
-      form.hidden = true;
-      const done = $('#inquiry-confirmation');
-      done.hidden = false;
-      done.querySelector('a')?.focus();
     },
     (data) => (data.message.trim().length < 10 ? { message: 'Please write at least a short message (10 characters or more).', field: 'message' } : undefined),
   );

@@ -1,5 +1,7 @@
-// pages/contact.js - contact / visit form
+// pages/contact.js - contact / visit form (saved in Firestore, collection "messages")
 import { handleForm, showSuccess } from '../forms.js';
+import { sendMessage } from '../messages.js';
+import { authErrorMessage } from '../auth.js';
 import { $, getParam } from '../utils.js';
 
 const form = $('#contact-form');
@@ -9,8 +11,12 @@ if (type && [...form.elements.type.options].some((o) => o.value === type)) form.
 handleForm(
   form,
   async (data) => {
-    // PHASE 4: save to Firestore (collection "messages") so the owner can read it in the staff area.
-    console.info('Contact message (not saved yet):', data);
+    try {
+      await sendMessage(data);
+    } catch (error) {
+      console.error(error);
+      throw new Error(authErrorMessage(error));
+    }
     form.reset();
     showSuccess(form, 'Thank you. Your message has been received and the farm will reply to you.');
   },

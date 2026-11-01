@@ -1,7 +1,6 @@
 // pages/animal-profile.js - staff view of ONE animal (?id=...)
 import { requireRole } from '../auth.js';
-import { getAnimalById } from '../data.js';
-import { setOverride } from '../storage.js';
+import { getAnimalById, updateAnimal } from '../data.js';
 import { imageUrl, statusBadge } from '../render.js';
 import { categoryLabel } from '../config.js';
 import { $, getParam, escapeHtml, formatDate, formatAge, capitalize, rootUrl } from '../utils.js';
@@ -29,7 +28,7 @@ function render(a) {
   root.innerHTML = `
     <div class="back-row">
       <a href="${rootUrl('pages/animal-records.html')}">Back to Animal Records</a>
-      <div><button type="button" class="btn secondary" disabled>Edit Record</button> <button type="button" class="btn" disabled>+ Add Log Entry</button></div>
+      <div><a class="btn secondary" href="${rootUrl('pages/animal-form.html')}?id=${encodeURIComponent(a.id)}">Edit Record</a> <button type="button" class="btn" disabled>+ Add Log Entry</button></div>
     </div>
     <section class="animal-profile-head">
       <img src="${imageUrl(a)}" alt="${escapeHtml(a.name)}">
@@ -61,13 +60,24 @@ function render(a) {
       <section class="panel" id="notes"><h2>Notes</h2><p>${escapeHtml(a.notes)}</p></section>
     </div>`;
 
-  // DEMO: stored in the browser so the public pages react. Phase 4: update the Firestore document.
+  // Saved straight to Firestore, so the public website changes immediately.
   const msg = $('#visibility-msg');
-  $('#toggle-sale').addEventListener('change', (e) => { setOverride(a.id, { forSale: e.target.checked }); msg.textContent = e.target.checked ? 'Now visible on the website.' : 'Hidden from the website.'; });
-  $('#toggle-featured').addEventListener('change', (e) => { setOverride(a.id, { featured: e.target.checked }); msg.textContent = e.target.checked ? 'Now featured on the website.' : 'No longer featured.'; });
+  const bind = (selector, field, onText, offText) => $(selector).addEventListener('change', async (e) => {
+    const box = e.target;
+    try {
+      await updateAnimal(a.id, { [field]: box.checked });
+      msg.textContent = box.checked ? onText : offText;
+    } catch (error) {
+      console.error(error);
+      box.checked = !box.checked;
+      msg.textContent = 'Could not save the change. Please try again.';
+    }
+  });
+  bind('#toggle-sale', 'forSale', 'Now visible on the website.', 'Hidden from the website.');
+  bind('#toggle-featured', 'featured', 'Now featured on the website.', 'No longer featured.');
 }
 
-if (requireRole('staff')) {
+if (await requireRole('staff')) {
   try {
     const animal = await getAnimalById(getParam('id'));
     if (animal) { document.title = `${animal.name} | Herd management`; render(animal); }
