@@ -6,13 +6,11 @@
 // (Never commit a "service account" JSON key. That one IS secret and is already in .gitignore.)
 
 export const firebaseConfig = {
-  apiKey: 'PASTE_API_KEY',
-  authDomain: 'PASTE_PROJECT_ID.firebaseapp.com',
-  projectId: 'PASTE_PROJECT_ID',
-  storageBucket: 'PASTE_PROJECT_ID.firebasestorage.app', // only needed if the team uses Firebase Storage
-  messagingSenderId: 'PASTE_SENDER_ID',
-  appId: 'PASTE_APP_ID',
+  apiKey: "AIzaSyC2kmFOa-pjzpJup5qq1NOk_5rsm3zlRDw",
+  authDomain: "pertenakan-binatang-website.firebaseapp.com",
+  projectId: "pertenakan-binatang-website",
+  storageBucket: "pertenakan-binatang-website.firebasestorage.app",
+  messagingSenderId: "26907766967",
+  appId: "1:26907766967:web:b9f8fb36c155b116491d32",
+  measurementId: "G-3BD0DKR1JT"
 };
-
-// True once someone has replaced the placeholders above.
-export const isConfigured = !Object.values(firebaseConfig).some((v) => String(v).includes('PASTE'));
