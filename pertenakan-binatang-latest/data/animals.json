@@ -18,9 +18,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/Product name 1.1.jpg",
+      "assets/images/Kasnisah's photo/Product name 1 pic.jpeg",
+      "assets/images/Kasnisah's photo/product name 3 pic.jpeg"
     ],
     "health": {
       "vaccinated": true,
@@ -91,9 +91,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/duke 1.jpg",
+      "assets/images/Kasnisah's photo/duke 2.jpg",
+      "assets/images/Kasnisah's photo/duke 3.jpg"
     ],
     "health": {
       "vaccinated": true,
@@ -157,9 +157,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/maple 1.jpg",
+      "assets/images/Kasnisah's photo/maple 2.jpg",
+      "assets/images/Kasnisah's photo/maple 3.jpg"
     ],
     "health": {
       "vaccinated": true,
@@ -223,9 +223,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/rocky 1.jpg",
+      "assets/images/Kasnisah's photo/rocky 2.jpg",
+      "assets/images/Kasnisah's photo/rocky 3.jpg"
     ],
     "health": {
       "vaccinated": true,
@@ -289,9 +289,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/titan 1.jpg",
+      "assets/images/Kasnisah's photo/titan 2.jpg",
+      "assets/images/Kasnisah's photo/titan 3.jpg"
     ],
     "health": {
       "vaccinated": true,
@@ -342,7 +342,7 @@
     "name": "Lily",
     "species": "goats",
     "breed": "Boer",
-    "sex": "female",
+    "sex": "male",
     "dob": "2024-08-11",
     "price": 450,
     "status": "available",
@@ -355,9 +355,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/lily 1.jpg",
+      "assets/images/Kasnisah's photo/lily 2.jpg",
+      "assets/images/Kasnisah's photo/lily 3.jpg"
     ],
     "health": {
       "vaccinated": true,
@@ -421,9 +421,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/Products page pic 1.jpeg",
+      "assets/images/Kasnisah's photo/hana 1.jpg",
+      "assets/images/Kasnisah's photo/hana 2.jpg"
     ],
     "health": {
       "vaccinated": true,
@@ -473,7 +473,7 @@
     "tag": "KF-008",
     "name": "Snowy",
     "species": "sheep",
-    "breed": "Dorper",
+    "breed": "kiko",
     "sex": "female",
     "dob": "2024-02-17",
     "price": 380,
@@ -487,9 +487,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/kiko 1.jpg",
+      "assets/images/Kasnisah's photo/kiko 2.jpg",
+      "assets/images/Kasnisah's photo/kiko 3.jpg"
     ],
     "health": {
       "vaccinated": true,
@@ -553,9 +553,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/ram 1.jpg",
+      "assets/images/Kasnisah's photo/ram 2.jpg",
+      "assets/images/Kasnisah's photo/ram 3.jpg"
     ],
     "health": {
       "vaccinated": true,
@@ -619,9 +619,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/hen 1.jpg",
+      "assets/images/Kasnisah's photo/hen 2.jpg",
+      "assets/images/Kasnisah's photo/hen 3.jpg"
     ],
     "health": {
       "vaccinated": true,
@@ -685,9 +685,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/duck 1.jpg",
+      "assets/images/Kasnisah's photo/duck 2.jpg",
+      "assets/images/Kasnisah's photo/duck 3.jpg"
     ],
     "health": {
       "vaccinated": true,
