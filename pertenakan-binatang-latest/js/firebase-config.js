@@ -14,3 +14,6 @@ export const firebaseConfig = {
   appId: "1:26907766967:web:b9f8fb36c155b116491d32",
   measurementId: "G-3BD0DKR1JT"
 };
+
+// True once the placeholders have been replaced. firebase.js imports this.
+export const isConfigured = !Object.values(firebaseConfig).some((v) => String(v).includes("PASTE"));
