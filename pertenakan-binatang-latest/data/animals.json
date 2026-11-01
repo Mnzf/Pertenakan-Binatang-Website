@@ -289,9 +289,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/titan 1.jpg",
+      "assets/images/Kasnisah's photo/titan 2.jpg",
+      "assets/images/Kasnisah's photo/titan 3.jpg"
     ],
     "health": {
       "vaccinated": true,
@@ -473,7 +473,7 @@
     "tag": "KF-008",
     "name": "Snowy",
     "species": "sheep",
-    "breed": "Dorper",
+    "breed": "kiko",
     "sex": "female",
     "dob": "2024-02-17",
     "price": 380,
@@ -487,9 +487,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/kiko 1.jpg",
+      "assets/images/Kasnisah's photo/kiko 2.jpg",
+      "assets/images/Kasnisah's photo/kiko 3.jpg"
     ],
     "health": {
       "vaccinated": true,
@@ -553,9 +553,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/ram 1.jpg",
+      "assets/images/Kasnisah's photo/ram 2.jpg",
+      "assets/images/Kasnisah's photo/ram 3.jpg"
     ],
     "health": {
       "vaccinated": true,
@@ -619,9 +619,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/hen 1.jpg",
+      "assets/images/Kasnisah's photo/hen 2.jpg",
+      "assets/images/Kasnisah's photo/hen 3.jpg"
     ],
     "health": {
       "vaccinated": true,
@@ -685,9 +685,9 @@
     "sire": "[Sire name / ID]",
     "dam": "[Dam name / ID]",
     "images": [
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg",
-      "assets/images/placeholder.svg"
+      "assets/images/Kasnisah's photo/duck 1.jpg",
+      "assets/images/Kasnisah's photo/duck 2.jpg",
+      "assets/images/Kasnisah's photo/duck 3.jpg"
     ],
     "health": {
       "vaccinated": true,
