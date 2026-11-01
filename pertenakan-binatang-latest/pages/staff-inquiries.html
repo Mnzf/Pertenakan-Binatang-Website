@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales and Inquiries | Kaznisah Farming Sdn Bhd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@400;600;700&family=Jacques+Francois&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body class="">
+
+  <div class="portal staff-portal">
+    <aside class="portal-side">
+      <strong>[ HERD MGMT ]</strong>
+      <div class="user-chip"><span>[Account Name]</span><small>Manager</small></div>
+      <nav aria-label="Portal navigation">
+      <ul>
+        <li><a href="staff-dashboard.html">Overview</a></li>
+        <li><a href="animal-records.html">Animal Records</a></li>
+        <li><a href="#">Breeding + Calendar</a></li>
+        <li><a href="#">Health + Treatments</a></li>
+        <li><a href="#">Feed + Inventory</a></li>
+        <li><a href="staff-inquiries.html" aria-current="page">Sales + Inquiries</a></li>
+        <li><a href="#">Reports / Export</a></li>
+      </ul>
+      </nav>
+      <a class="btn secondary" href="staff-login.html" id="logout-btn">Sign out</a>
+    </aside>
+    <div class="portal-main">
+      <div class="portal-top">
+        <span>Operational workspace</span>
+        <button type="button" class="notification">Alerts [3]</button>
+      </div>
+      <div class="dashboard-heading">
+        <div><p class="eyebrow">HERD MANAGEMENT</p><h1>Sales + Inquiries</h1><p id="inq-count">Loading...</p></div>
+      </div>
+      <section class="panel record-panel">
+        <form class="record-tools" id="inq-filters">
+          <label for="i-status">Status</label>
+          <select id="i-status"><option value="">All</option></select>
+        </form>
+        <p id="inq-msg" role="status" class="fine"></p>
+        <div class="table-wrap" id="inq-table"><p class="loading">Loading inquiries...</p></div>
+      </section>
+    </div>
+  </div>
+
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/pages/staff-inquiries.js"></script>
+</body>
+</html>

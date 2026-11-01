@@ -35,7 +35,9 @@ if (staffLogin) {
     const profile = await login(data.email, data.password, { createProfile: false });
     if (!isStaff(profile)) {
       await logout();
-      throw new Error('This account does not have staff access.');
+      throw new Error(profile.role
+        ? `This is a "${profile.role}" account, not a staff account.`
+        : 'No staff profile found for this account. In Firestore, the users document ID must be this account\'s User UID, with role = owner.');
     }
     location.href = safeNext(getParam('next'), staffHome);
   }));
