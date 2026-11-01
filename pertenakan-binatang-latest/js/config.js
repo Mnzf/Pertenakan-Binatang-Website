@@ -1,8 +1,5 @@
 // config.js - settings shared by every page. Change them here, not in each file.
 
-// Phase 3 runs without a backend. Phase 4: set this to false once Firebase Auth works.
-export const DEMO_MODE = true;
-
 // How many animal cards to show before "Load more".
 export const PAGE_SIZE = 6;
 
@@ -19,3 +16,9 @@ export const CATEGORIES = [
 ];
 
 export const categoryLabel = (slug) => CATEGORIES.find((c) => c.slug === slug)?.label ?? slug;
+
+// Account roles stored in Firestore users/{uid}.role. These three can use the herd-management area.
+export const STAFF_ROLES = ['owner', 'manager', 'staff'];
+
+export const ANIMAL_STATUSES = ['available', 'reserved', 'sold'];
+export const INQUIRY_STATUSES = ['Submitted', 'Contacted', 'Closed'];

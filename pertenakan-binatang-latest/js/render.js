@@ -2,13 +2,16 @@
 // Every value that came from data goes through escapeHtml().
 
 import { rootUrl, escapeHtml, formatPrice, formatAge, capitalize } from './utils.js';
-import { isSaved } from './storage.js';
+import { isSaved } from './saved.js';
 import { categoryLabel } from './config.js';
 
 export const detailUrl  = (id) => `${rootUrl('pages/animal-detail.html')}?id=${encodeURIComponent(id)}`;
 export const inquireUrl = (id) => `${rootUrl('pages/inquire.html')}?animal=${encodeURIComponent(id)}`;
 export const profileUrl = (id) => `${rootUrl('pages/animal-profile.html')}?id=${encodeURIComponent(id)}`;
-export const imageUrl   = (animal, index = 0) => rootUrl(animal.images?.[index] ?? 'assets/images/placeholder.svg');
+export const imageUrl = (animal, index = 0) => {
+  const path = animal.images?.[index] ?? 'assets/images/placeholder.svg';
+  return /^https:\/\//.test(path) ? path : rootUrl(path);   // full https URL, or a file inside this website
+};
 
 export const statusBadge = (status) =>
   `<span class="status status-${escapeHtml(status)}">${escapeHtml(capitalize(status))}</span>`;
@@ -38,4 +41,4 @@ export const emptyState = (message, linkHtml = '') =>
   `<p class="empty-state">${message} ${linkHtml}</p>`;
 
 export const errorState = () =>
-  '<p class="error-state" role="alert">Sorry, we could not load the animals. Please refresh the page. If it keeps happening, make sure you opened the site with Live Server.</p>';
+  '<p class="error-state" role="alert">Sorry, we could not load the animals. Please refresh the page. (Developers: use Live Server and check js/firebase-config.js and the browser Console.)</p>';

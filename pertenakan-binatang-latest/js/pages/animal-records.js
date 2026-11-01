@@ -11,7 +11,7 @@ const form = $('#record-filters');
 const holder = $('#records-table');
 const pager = $('#records-pagination');
 
-if (requireRole('staff')) {
+if (await requireRole('staff')) {
   try {
     const animals = await getAnimals();
     let page = 1;

@@ -1,5 +1,6 @@
 // pages/animals.js - animal listing: category, filters, sorting, "load more"
 import { getPublicAnimals } from '../data.js';
+import { authReady } from '../auth.js';
 import { filterAnimals, sortAnimals, AGE_BANDS, PRICE_BANDS } from '../filters.js';
 import { animalCard, emptyState, errorState } from '../render.js';
 import { CATEGORIES, PAGE_SIZE, categoryLabel } from '../config.js';
@@ -61,6 +62,7 @@ function render() {
 function refreshAll() { updateHeading(); updateBreedOptions(); shown = PAGE_SIZE; render(); }
 
 try {
+  await authReady();   // so the Save buttons know what this buyer has saved
   animals = await getPublicAnimals();
 
   addOptions(form.elements.species, CATEGORIES.map((c) => [c.slug, c.label]));
