@@ -7,12 +7,12 @@ export const PAGE_SIZE = 6;
 // category pages. Confirm the final list with the client, then edit it here
 // (and in the header <ul class="dropdown"> in the HTML).
 export const CATEGORIES = [
-  { slug: 'cattle',  label: 'Cattle',  description: '[Category description to be confirmed with the client.]' },
-  { slug: 'goats',   label: 'Goats',   description: '[Category description to be confirmed with the client.]' },
-  { slug: 'sheep',   label: 'Sheep',   description: '[Category description to be confirmed with the client.]' },
-  { slug: 'bulls',   label: 'Bulls',   description: '[Category description to be confirmed with the client.]' },
-  { slug: 'poultry', label: 'Poultry', description: '[Category description to be confirmed with the client.]' },
-  { slug: 'horses',  label: 'Horses',  description: '[Category description to be confirmed with the client.]' },
+  { slug: 'cattle',  label: 'Cattle' },
+  { slug: 'goats',   label: 'Goats' },
+  { slug: 'sheep',   label: 'Sheep' },
+  { slug: 'bulls',   label: 'Bulls' },
+  { slug: 'poultry', label: 'Poultry' },
+  { slug: 'horses',  label: 'Horses' },
 ];
 
 export const categoryLabel = (slug) => CATEGORIES.find((c) => c.slug === slug)?.label ?? slug;

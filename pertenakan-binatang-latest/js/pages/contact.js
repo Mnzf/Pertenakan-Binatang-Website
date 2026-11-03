@@ -1,12 +1,21 @@
 // pages/contact.js - contact / visit form (saved in Firestore, collection "messages")
 import { handleForm, showSuccess } from '../forms.js';
 import { sendMessage } from '../messages.js';
-import { authErrorMessage } from '../auth.js';
+import { authReady, getCurrentUser, authErrorMessage } from '../auth.js';
 import { $, getParam } from '../utils.js';
 
 const form = $('#contact-form');
 const type = getParam('type');
 if (type && [...form.elements.type.options].some((o) => o.value === type)) form.elements.type.value = type;
+
+// A logged-in buyer does not have to type their details again
+await authReady();
+const user = getCurrentUser();
+if (user) {
+  if (!form.elements.name.value) form.elements.name.value = user.name;
+  if (!form.elements.email.value) form.elements.email.value = user.email;
+  if (!form.elements.phone.value) form.elements.phone.value = user.phone;
+}
 
 handleForm(
   form,

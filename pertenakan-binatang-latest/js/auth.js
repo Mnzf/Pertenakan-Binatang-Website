@@ -85,6 +85,16 @@ export async function logout() {
   current = null;
 }
 
+// A buyer changes their own name / phone (the rules only allow these two fields).
+export async function updateProfileInfo({ name, phone }) {
+  needFirebase();
+  if (!current) throw new Error('Not logged in');
+  const clean = { name: name.trim(), phone: (phone || '').trim() };
+  await setDoc(doc(db, 'users', current.uid), clean, { merge: true });
+  Object.assign(current, clean);
+  return current;
+}
+
 export function resetPassword(email) {
   needFirebase();
   return sendPasswordResetEmail(auth, email);

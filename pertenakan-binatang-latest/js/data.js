@@ -2,7 +2,7 @@
 // Pages never talk to Firestore for animals directly; they call these functions.
 
 import {
-  db, collection, doc, getDoc, getDocs, setDoc, addDoc, updateDoc, deleteDoc, query, where, serverTimestamp,
+  db, collection, doc, getDoc, getDocs, setDoc, addDoc, updateDoc, deleteDoc, query, where, serverTimestamp, arrayUnion,
 } from './firebase.js';
 
 function needDb() {
@@ -63,3 +63,24 @@ export async function saveAnimal(id, data) {
 
 export const updateAnimal = (id, patch) => updateDoc(doc(needDb(), 'animals', id), { ...patch, updatedAt: serverTimestamp() });
 export const deleteAnimal = (id) => deleteDoc(doc(needDb(), 'animals', id));
+
+// Add a health / weight / breeding log entry to an animal (kind = 'health' | 'weight' | 'breeding').
+const LOG_FIELDS = { health: 'healthLog', weight: 'weightHistory', breeding: 'breeding' };
+export async function addLogEntry(animal, kind, entry) {
+  const field = LOG_FIELDS[kind];
+  if (!field) throw new Error('Unknown log entry type.');
+  const patch = { [field]: arrayUnion(entry), updatedAt: serverTimestamp() };
+
+  if (kind === 'weight') {
+    // "current weight" follows the newest weigh-in
+    const newest = [...(animal.weightHistory ?? []), entry].sort((a, b) => String(a.date).localeCompare(String(b.date))).at(-1);
+    patch.weightKg = newest.kg;
+  }
+  if (kind === 'health' && entry.status === 'Done') {
+    if (entry.type === 'Vaccination') patch['health.vaccinated'] = true;
+    if (['Vaccination', 'Health check'].includes(entry.type) && String(entry.date) >= String(animal.health?.lastCheck ?? '')) {
+      patch['health.lastCheck'] = entry.date;
+    }
+  }
+  await updateDoc(doc(needDb(), 'animals', animal.id), patch);
+}
