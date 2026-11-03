@@ -21,8 +21,8 @@
         <li><a href="buyer-dashboard.html" aria-current="page">Overview</a></li>
         <li><a href="buyer-dashboard.html#saved">Saved Animals</a></li>
         <li><a href="buyer-dashboard.html#inquiries">Inquiries</a></li>
-        <li><a href="buyer-dashboard.html#messages">Messages</a></li>
-        <li><a href="#">Account Settings</a></li>
+        <li><a href="buyer-messages.html">Messages</a></li>
+        <li><a href="buyer-settings.html">Account Settings</a></li>
       </ul>
       </nav>
       <a class="btn secondary" href="../index.html" id="logout-btn">Sign out</a>
@@ -30,15 +30,15 @@
     <div class="portal-main">
       <div class="portal-top">
         <span>Buyer account</span>
-        <button type="button" class="notification">Alerts [3]</button>
       </div>
       <div class="dashboard-heading">
         <div><p class="eyebrow">BUYER PORTAL</p><h1>Welcome, <span id="welcome-name">[First Name]</span></h1><p>Here's the latest activity on your account.</p></div>
         <a class="btn" href="animals.html">Browse Animals</a>
       </div>
       <div class="metric-grid">
-        <div class="metric"><span>Saved animals</span><strong id="metric-saved">0</strong><a href="#">View details</a></div>
-        <div class="metric"><span>Open inquiries</span><strong id="metric-inquiries">0</strong><a href="#">View details</a></div>
+        <div class="metric"><span>Saved animals</span><strong id="metric-saved">0</strong></div>
+        <div class="metric"><span>Open inquiries</span><strong id="metric-inquiries">0</strong></div>
+        <div class="metric"><span>Replies from the farm</span><strong id="metric-replies">0</strong><a href="buyer-messages.html">Read messages</a></div>
       </div>
       <div class="dashboard-grid">
         <section class="panel" id="saved">
@@ -50,17 +50,16 @@
           <ul class="status-list" id="inquiry-list"><li class="loading">Loading...</li></ul>
         </section>
         <section class="panel" id="messages">
-          <h2>Messages</h2>
-          <p><strong>[Ranch Team]</strong></p>
-          <p>[Latest message preview goes here...]</p>
-          <a href="#">Open messages</a>
+          <h2>Latest message</h2>
+          <div id="latest-message"><p class="loading">Loading...</p></div>
+          <a href="buyer-messages.html">Open messages</a>
         </section>
       </div>
     </div>
   </div>
 
   <!-- JavaScript -->
-   <script type="module" src="../js/main.js"></script>
-   <script type="module" src="../js/pages/buyer-dashboard.js"></script>
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/pages/buyer-dashboard.js"></script>
 </body>
 </html>

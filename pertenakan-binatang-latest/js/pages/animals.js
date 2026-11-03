@@ -29,7 +29,6 @@ function updateHeading() {
   const label = info ? info.label : 'All animals';
   $('#category-title').textContent = label;
   $('#category-crumb').textContent = `Our Animals / ${label}`;
-  $('#category-desc').textContent = info ? info.description : 'Browse the animals currently listed by the farm.';
   $('#list-title-text').textContent = info ? info.label : 'animals';
   document.title = `${label} | Kaznisah Farming Sdn Bhd`;
   $$('.category-nav a').forEach((link) => {

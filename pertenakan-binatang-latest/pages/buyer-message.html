@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages | Kaznisah Farming Sdn Bhd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@400;600;700&family=Jacques+Francois&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body class="">
+
+  <div class="portal">
+    <aside class="portal-side">
+      <strong>[ BUYER PORTAL ]</strong>
+      <div class="user-chip"><span>[Account Name]</span><small>Buyer account</small></div>
+      <nav aria-label="Portal navigation">
+      <ul>
+        <li><a href="buyer-dashboard.html">Overview</a></li>
+        <li><a href="buyer-dashboard.html#saved">Saved Animals</a></li>
+        <li><a href="buyer-dashboard.html#inquiries">Inquiries</a></li>
+        <li><a href="buyer-messages.html" aria-current="page">Messages</a></li>
+        <li><a href="buyer-settings.html">Account Settings</a></li>
+      </ul>
+      </nav>
+      <a class="btn secondary" href="../index.html" id="logout-btn">Sign out</a>
+    </aside>
+    <div class="portal-main">
+      <div class="portal-top">
+        <span>Buyer account</span>
+      </div>
+      <div class="dashboard-heading">
+        <div><p class="eyebrow">BUYER PORTAL</p><h1>Messages</h1><p id="msg-count">Loading...</p></div>
+        <a class="btn" href="animals.html">Browse Animals</a>
+      </div>
+      <section class="panel record-panel">
+        <p id="msg-status" role="status" class="fine"></p>
+        <div class="thread-list" id="thread-list"><p class="loading">Loading your messages...</p></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/pages/buyer-messages.js"></script>
+</body>
+</html>

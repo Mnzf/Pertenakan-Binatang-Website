@@ -9,6 +9,23 @@ $$('.main-nav a').forEach((link) => {
   if (normalise(new URL(link.href).pathname) === normalise(location.pathname)) link.setAttribute('aria-current', 'page');
 });
 
+// 1b. Mobile menu button (shown by the CSS on small screens)
+const header = $('.site-header');
+const nav = $('.main-nav');
+if (header && nav) {
+  nav.id ||= 'main-nav';
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'nav-toggle';
+  toggle.textContent = 'Menu';
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', nav.id);
+  nav.before(toggle);
+  const setOpen = (open) => { nav.classList.toggle('open', open); toggle.setAttribute('aria-expanded', String(open)); };
+  toggle.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setOpen(false); });
+}
+
 // 2. Clicks: log out + "Save" buttons. One listener on the document also works for cards added later by JS.
 document.addEventListener('click', async (event) => {
   const logoutLink = event.target.closest('#logout-btn, [data-logout]');

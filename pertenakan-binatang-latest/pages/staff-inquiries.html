@@ -20,11 +20,7 @@
       <ul>
         <li><a href="staff-dashboard.html">Overview</a></li>
         <li><a href="animal-records.html">Animal Records</a></li>
-        <li><a href="#">Breeding + Calendar</a></li>
-        <li><a href="#">Health + Treatments</a></li>
-        <li><a href="#">Feed + Inventory</a></li>
         <li><a href="staff-inquiries.html" aria-current="page">Sales + Inquiries</a></li>
-        <li><a href="#">Reports / Export</a></li>
       </ul>
       </nav>
       <a class="btn secondary" href="staff-login.html" id="logout-btn">Sign out</a>
@@ -32,18 +28,33 @@
     <div class="portal-main">
       <div class="portal-top">
         <span>Operational workspace</span>
-        <button type="button" class="notification">Alerts [3]</button>
       </div>
       <div class="dashboard-heading">
         <div><p class="eyebrow">HERD MANAGEMENT</p><h1>Sales + Inquiries</h1><p id="inq-count">Loading...</p></div>
       </div>
       <section class="panel record-panel">
-        <form class="record-tools" id="inq-filters">
-          <label for="i-status">Status</label>
-          <select id="i-status"><option value="">All</option></select>
-        </form>
-        <p id="inq-msg" role="status" class="fine"></p>
-        <div class="table-wrap" id="inq-table"><p class="loading">Loading inquiries...</p></div>
+        <div class="tabs" role="tablist" aria-label="Inquiry sections">
+          <button type="button" role="tab" id="tab-inq" aria-selected="true" aria-controls="panel-inq">Buyer inquiries</button>
+          <button type="button" role="tab" id="tab-contact" aria-selected="false" aria-controls="panel-contact">Contact messages</button>
+        </div>
+
+        <div id="panel-inq" role="tabpanel" aria-labelledby="tab-inq">
+          <form class="record-tools" id="inq-filters">
+            <label for="i-status">Status</label>
+            <select id="i-status"><option value="">All</option></select>
+          </form>
+          <p id="inq-msg" role="status" class="fine"></p>
+          <div class="thread-list" id="inq-list"><p class="loading">Loading inquiries...</p></div>
+        </div>
+
+        <div id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
+          <form class="record-tools" id="msg-filters">
+            <label for="m-filter">Show</label>
+            <select id="m-filter"><option value="">All</option><option value="new">New</option><option value="handled">Handled</option></select>
+          </form>
+          <p id="contact-msg" role="status" class="fine"></p>
+          <div class="table-wrap" id="contact-table"><p class="loading">Loading messages...</p></div>
+        </div>
       </section>
     </div>
   </div>

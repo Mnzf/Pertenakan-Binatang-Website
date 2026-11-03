@@ -249,3 +249,58 @@ tbody tr:hover { background: var(--color-highlight); }
 .form-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--space-3); }
 .table-wrap td.wrap { white-space: normal; min-width: 240px; }
 @media (max-width: 900px) { .form-two-col { grid-template-columns: 1fr; } }
+
+/* Footer: three columns now (the social column was removed) */
+@media (min-width: 1101px) { .site-footer { grid-template-columns: 1.6fr 1fr 1fr; } }
+.site-footer a { text-decoration: underline; }
+
+/* Home: wider "About" picture */
+@media (min-width: 901px) { #about-teaser { grid-template-columns: 1.8fr 1fr; } }
+#about-teaser img { height: 420px; object-fit: cover; }
+
+/* Contact: the map no longer overlaps the contact details */
+.map-frame { margin-bottom: var(--space-2); border: 1px solid var(--color-border); background: var(--color-dark); }
+.map-frame iframe { display: block; width: 100%; height: 400px; border: 0; }
+.contact-facts a { text-decoration: underline; }
+
+/* Home hero video */
+.hero video { height: 330px; width: 100%; object-fit: cover; border: 1px solid var(--color-border); }
+
+/* Mobile menu button + menu */
+.nav-toggle { display: none; min-height: 44px; padding: 8px 14px; background: transparent; color: var(--color-white); border: 1px solid var(--color-white); border-radius: var(--radius); font-weight: 600; }
+@media (max-width: 900px) {
+  .nav-toggle { display: inline-flex; align-items: center; }
+  .main-nav { display: none; order: 3; width: 100%; overflow: visible; }
+  .main-nav.open { display: block; }
+  .main-nav > ul { flex-direction: column; align-items: stretch; gap: 0; }
+  .main-nav a { display: block; padding: 12px 4px; }
+  .dropdown { display: block; position: static; width: auto; padding: 0 0 0 16px; background: transparent; border: 0; }
+  .dropdown a { color: var(--color-white); padding: 8px 4px; font-size: 14px; }
+}
+
+/* Auth pages without the picture */
+.auth-aside { justify-content: flex-start; gap: 80px; }
+
+/* Tabs (staff Sales + Inquiries) */
+.tabs { display: flex; flex-wrap: wrap; gap: 2px; margin-bottom: var(--space-2); border-bottom: 1px solid var(--color-border); }
+.tabs [role="tab"] { padding: 11px 16px; background: transparent; border: 0; font-weight: 600; }
+.tabs [role="tab"][aria-selected="true"] { background: var(--color-dark); color: var(--color-white); }
+
+/* Conversations (buyer Messages + staff Sales + Inquiries) */
+.thread-list { display: flex; flex-direction: column; gap: var(--space-2); }
+.thread-card { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-2); background: var(--color-white); border: 1px solid var(--color-border); }
+.thread-head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-2); flex-wrap: wrap; }
+.thread-contact { font-size: 13px; color: var(--color-muted); }
+.bubble { max-width: 85%; margin: 6px 0; padding: 10px 12px; background: var(--color-highlight); border: 1px solid var(--color-border); }
+.bubble p { margin: 4px 0 0; white-space: pre-wrap; }
+.bubble.from-staff { margin-left: auto; background: var(--color-panel); }
+.thread { padding-top: var(--space-1); border-top: 1px solid var(--color-border); }
+.thread summary { cursor: pointer; font-weight: 600; }
+.reply-form { margin-top: var(--space-1); }
+.status-reply { background: var(--color-gold); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* "Add log entry" pop-up */
+dialog { width: calc(100% - 32px); max-width: 520px; padding: var(--space-3); background: var(--color-bg); border: 2px solid var(--color-dark); }
+dialog::backdrop { background: rgba(0, 0, 0, .5); }
+dialog fieldset { margin-top: var(--space-2); }

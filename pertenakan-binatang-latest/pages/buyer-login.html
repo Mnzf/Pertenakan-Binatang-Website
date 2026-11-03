@@ -20,16 +20,15 @@
         <h1>Welcome back</h1>
         <p>[Keep track of animals, inquiries, and messages from the owner.]</p>
       </div>
-      <img src="../assets/images/placeholder.svg" alt="[Supporting image]">
     </aside>
 
     <section class="auth-form">
       <h2>Sign in</h2>
       <form id="buyer-login-form">
       <label for="login-email">Email</label>
-      <input type="email" id="login-email" name="email">
+      <input type="email" id="login-email" required autocomplete="email" name="email">
       <label for="login-password">Password</label>
-      <input type="password" id="login-password" name="password">
+      <input type="password" id="login-password" required autocomplete="current-password" name="password">
       <label><input type="checkbox" name="remember"> Remember me</label>
       <a href="#" id="forgot-password">Forgot password?</a>
       <p id="buyer-login-form-error" role="alert"></p>
@@ -42,7 +41,7 @@
   </main>
 
   <!-- JavaScript -->
-   <script type="module" src="../js/main.js"></script>
-   <script type="module" src="../js/pages/auth-forms.js"></script>
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/pages/auth-forms.js"></script>
 </body>
 </html>
