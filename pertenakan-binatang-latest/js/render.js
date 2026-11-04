@@ -18,7 +18,7 @@ export const statusBadge = (status) =>
 
 export function saveButton(animal) {
   const saved = isSaved(animal.id);
-  return `<button type="button" class="save-btn" data-save="${escapeHtml(animal.id)}" aria-pressed="${saved}" aria-label="Save ${escapeHtml(animal.name)}">${saved ? 'Saved' : 'Save'}</button>`;
+  return `<button type="button" class="btn secondary save-btn" data-save="${escapeHtml(animal.id)}" aria-pressed="${saved}" aria-label="Save ${escapeHtml(animal.name)}">${saved ? 'Saved' : 'Save'}</button>`;
 }
 
 export function animalCard(animal, { featured = false } = {}) {
@@ -27,11 +27,13 @@ export function animalCard(animal, { featured = false } = {}) {
       ${featured ? '<span class="feature-flag">Featured</span>' : ''}
       <img src="${imageUrl(animal)}" alt="${escapeHtml(animal.name)}, ${escapeHtml(animal.breed)}">
       ${statusBadge(animal.status)}
-      ${saveButton(animal)}
       <h3>${escapeHtml(animal.name)} <small>(${escapeHtml(animal.tag)})</small></h3>
       <p>${escapeHtml(animal.breed)} | ${escapeHtml(formatAge(animal.dob))} | ${escapeHtml(capitalize(animal.sex))}</p>
       <p><strong>${escapeHtml(formatPrice(animal.price))}${animal.price == null ? '' : ' / Inquire'}</strong></p>
-      <a href="${detailUrl(animal.id)}">View details</a>
+      <div class="card-actions">
+        <a class="btn" href="${detailUrl(animal.id)}">View details</a>
+        ${saveButton(animal)}
+      </div>
     </article>`;
 }
 

@@ -56,3 +56,6 @@ export async function sendInquiryMessage(inquiry, user, text) {
   await updateDoc(doc(db, 'inquiries', inquiry.id), patch);
   return { text, from, authorName: user.name, createdAt: new Date().toISOString(), patch };
 }
+
+// Lets threads.js show an inquiry conversation (same shape as contactThread in messages.js).
+export const inquiryThread = { getMessages, sendMessage: sendInquiryMessage };
