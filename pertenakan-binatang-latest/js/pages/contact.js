@@ -17,11 +17,19 @@ if (user) {
   if (!form.elements.phone.value) form.elements.phone.value = user.phone;
 }
 
+// Tell the sender where the reply will come
+form.querySelector('[type="submit"]').before(Object.assign(document.createElement('p'), {
+  className: 'fine',
+  textContent: user
+    ? "You are logged in, so the farm's reply will also appear under Messages in your account."
+    : 'Not logged in? The farm will reply by email or phone.',
+}));
+
 handleForm(
   form,
   async (data) => {
     try {
-      await sendMessage(data);
+      await sendMessage(data, user?.uid);
     } catch (error) {
       console.error(error);
       throw new Error(authErrorMessage(error));

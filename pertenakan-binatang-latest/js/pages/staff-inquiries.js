@@ -1,11 +1,11 @@
 // pages/staff-inquiries.js - staff read buyer inquiries (and reply), and read contact-form messages
 import { requireRole } from '../auth.js';
 import { getAllInquiries, updateInquiryStatus } from '../inquiries.js';
-import { getContactMessages, setMessageHandled } from '../messages.js';
+import { getContactMessages, setMessageHandled, contactThread } from '../messages.js';
 import { wireThreads } from '../threads.js';
 import { profileUrl } from '../render.js';
 import { INQUIRY_STATUSES } from '../config.js';
-import { $, $$, getParam, escapeHtml, formatDate, formatDateTime } from '../utils.js';
+import { $, getParam, escapeHtml, formatDateTime } from '../utils.js';
 
 const list = $('#inq-list');
 const filter = $('#i-status');
@@ -91,50 +91,83 @@ if (user) {
     list.innerHTML = '<p class="error-state" role="alert">Could not load inquiries.</p>';
   }
 
-  // ---------- contact-form messages ----------
-  const table = $('#contact-table');
+  // ---------- contact-form messages (conversations, like the inquiries) ----------
+  const contactList = $('#contact-list');
   const mFilter = $('#m-filter');
   try {
     const messages = await getContactMessages();
     const typeLabel = { animal: 'Animal inquiry', visit: 'Book a visit / tour' };
 
-    const renderContacts = () => {
-      const rows = messages.filter((m) => !mFilter.value || (mFilter.value === 'new' ? !m.handled : m.handled));
+    const updateTabLabel = () => {
       const fresh = messages.filter((m) => !m.handled).length;
       $('#tab-contact').textContent = fresh ? `Contact messages (${fresh} new)` : 'Contact messages';
-      table.innerHTML = rows.length ? `
-        <table>
-          <thead><tr><th>Date</th><th>From</th><th>Type</th><th>Message</th><th>Handled</th></tr></thead>
-          <tbody>${rows.map((m) => `
-            <tr>
-              <td>${escapeHtml(formatDate(m.createdAt))}</td>
-              <td>${escapeHtml(m.name)}<br><a href="mailto:${escapeHtml(m.email)}">${escapeHtml(m.email)}</a>${m.phone ? `<br><a href="tel:${escapeHtml(m.phone)}">${escapeHtml(m.phone)}</a>` : ''}</td>
-              <td>${escapeHtml(typeLabel[m.type] ?? 'General')}</td>
-              <td class="wrap">${escapeHtml(m.message)}</td>
-              <td><input type="checkbox" data-msg="${escapeHtml(m.id)}" aria-label="Mark message from ${escapeHtml(m.name)} as handled" ${m.handled ? 'checked' : ''}></td>
-            </tr>`).join('')}</tbody>
-        </table>` : '<p class="empty-state">No messages.</p>';
+    };
+
+    const messageCard = (m) => `
+      <article class="thread-card" id="msg-${escapeHtml(m.id)}">
+        <div class="thread-head">
+          <div><strong>${escapeHtml(m.name)}</strong> | ${escapeHtml(typeLabel[m.type] ?? 'General')}<br>
+            <small>${escapeHtml(formatDateTime(m.createdAt))}</small></div>
+          <div><label for="ms-${escapeHtml(m.id)}" class="visually-hidden">Status for the message from ${escapeHtml(m.name)}</label>
+            <select id="ms-${escapeHtml(m.id)}" data-msgstatus="${escapeHtml(m.id)}">
+              <option value="new"${m.handled ? '' : ' selected'}>New</option><option value="handled"${m.handled ? ' selected' : ''}>Handled</option></select></div>
+        </div>
+        <p class="thread-contact"><a href="mailto:${escapeHtml(m.email)}">${escapeHtml(m.email)}</a>${m.phone ? ` | <a href="tel:${escapeHtml(m.phone)}">${escapeHtml(m.phone)}</a>` : ''}
+          | ${m.userId ? 'has a buyer account' : 'visitor (no account)'}</p>
+        <div class="bubble from-buyer"><small>${escapeHtml(m.name)} | ${escapeHtml(formatDateTime(m.createdAt))}</small><p>${escapeHtml(m.message)}</p></div>
+        ${m.userId ? `
+        <details class="thread" data-thread="${escapeHtml(m.id)}">
+          <summary>Conversation${m.lastMessage ? ` | last message: ${escapeHtml(m.lastMessage)}` : ''}</summary>
+          <div class="thread-messages"></div>
+          <form class="reply-form" data-reply="${escapeHtml(m.id)}">
+            <label for="rp-${escapeHtml(m.id)}">Reply to ${escapeHtml(m.name)}</label>
+            <textarea id="rp-${escapeHtml(m.id)}" name="text" rows="3" required></textarea>
+            <p role="alert"></p>
+            <button type="submit" class="btn">Send reply</button>
+          </form>
+        </details>` : `
+        <p class="fine">This visitor was not logged in, so they cannot read replies on the website. Reply by email or phone, then mark it as handled.</p>
+        <p><a class="btn" href="mailto:${escapeHtml(m.email)}?subject=${encodeURIComponent('Re: your message to Kaznisah Farming')}">Reply by email</a></p>`}
+      </article>`;
+
+    const renderContacts = () => {
+      const rows = messages.filter((m) => !mFilter.value || (mFilter.value === 'new' ? !m.handled : m.handled));
+      updateTabLabel();
+      contactList.innerHTML = rows.length ? rows.map(messageCard).join('') : '<p class="empty-state">No messages.</p>';
     };
 
     mFilter.addEventListener('change', renderContacts);
-    table.addEventListener('change', async (event) => {
-      const box = event.target.closest('input[data-msg]');
-      if (!box) return;
-      const message = messages.find((m) => m.id === box.dataset.msg);
+    contactList.addEventListener('change', async (event) => {
+      const select = event.target.closest('select[data-msgstatus]');
+      if (!select) return;
+      const message = messages.find((m) => m.id === select.dataset.msgstatus);
+      const old = message.handled;
       try {
-        await setMessageHandled(message.id, box.checked);
-        message.handled = box.checked;
-        $('#contact-msg').textContent = box.checked ? 'Marked as handled.' : 'Marked as new.';
-        renderContacts();
+        await setMessageHandled(message.id, select.value === 'handled');
+        message.handled = select.value === 'handled';
+        updateTabLabel();
+        $('#contact-msg').textContent = message.handled ? 'Marked as handled.' : 'Marked as new.';
       } catch (error) {
         console.error(error);
-        box.checked = !box.checked;
+        select.value = old ? 'handled' : 'new';
         $('#contact-msg').textContent = 'Could not update the message. Please try again.';
       }
+    });
+
+    wireThreads(contactList, {
+      user,
+      find: (id) => messages.find((m) => m.id === id),
+      api: contactThread,
+      onSent: (message) => {
+        const select = $(`select[data-msgstatus="${message.id}"]`, contactList);
+        if (select) select.value = 'handled';   // a reply counts as handled
+        updateTabLabel();
+        $('#contact-msg').textContent = 'Reply sent.';
+      },
     });
     renderContacts();
   } catch (error) {
     console.error(error);
-    table.innerHTML = '<p class="error-state" role="alert">Could not load the contact messages.</p>';
+    contactList.innerHTML = '<p class="error-state" role="alert">Could not load the contact messages.</p>';
   }
 }

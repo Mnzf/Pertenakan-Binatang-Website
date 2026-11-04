@@ -304,3 +304,25 @@ tbody tr:hover { background: var(--color-highlight); }
 dialog { width: calc(100% - 32px); max-width: 520px; padding: var(--space-3); background: var(--color-bg); border: 2px solid var(--color-dark); }
 dialog::backdrop { background: rgba(0, 0, 0, .5); }
 dialog fieldset { margin-top: var(--space-2); }
+
+/* Animal cards: stand out from the page background */
+.card { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: 0 8px 20px rgba(70, 43, 26, .22); transition: transform .15s ease, box-shadow .15s ease; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(70, 43, 26, .3); }
+.card.featured { border: 2px solid var(--color-dark); }
+.card img { border-radius: var(--radius); }
+@media (prefers-reduced-motion: reduce) { .card, .card:hover { transition: none; transform: none; } }
+
+/* Two buttons at the bottom of every animal card: View details + Save */
+.card-actions { display: flex; gap: var(--space-1); margin-top: auto; }
+.card-actions .btn { flex: 1; min-width: 0; min-height: 44px; padding: 10px 12px; }
+.save-btn[aria-pressed="true"] { background: var(--color-dark); color: var(--color-white); }
+
+/* "Back to website" link at the top of both dashboards */
+.portal-top a { color: inherit; font-weight: 600; text-decoration: underline; }
+
+/* Header on small screens: keep BOTH login buttons visible (they used to be hidden below 900px) */
+@media (max-width: 900px) {
+  .login-actions { order: 4; width: 100%; flex-wrap: wrap; }
+  .site-header .btn:not(.secondary) { display: inline-flex; }
+  .login-actions .btn { flex: 1 1 180px; white-space: normal; text-align: center; }
+}
