@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Import sample animals (developers only)</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <!-- DEVELOPER TOOL. Copies data/animals.json into Firestore (collection "animals").
+       Log in as the owner/staff account first (the security rules only let staff write).
+       Delete the /dev folder before the final submission. -->
+  <main>
+    <h1>Import sample animals</h1>
+    <section class="panel">
+      <p>These are FAKE sample animals for testing. Importing again overwrites animals with the same id.</p>
+      <p id="s-state" role="status">Checking...</p>
+      <form id="s-form">
+        <label for="s-email">Staff email</label>
+        <input type="email" id="s-email" autocomplete="email" required>
+        <label for="s-password">Password</label>
+        <input type="password" id="s-password" autocomplete="current-password" required>
+        <p id="s-msg" role="alert"></p>
+        <button type="submit" class="btn secondary">Log in</button>
+      </form>
+      <button type="button" class="btn" id="s-import" disabled>Import sample animals</button>
+      <p id="s-result" role="status"></p>
+    </section>
+  </main>
+  <script type="module">
+    import { isConfigured, db, doc, setDoc } from '../js/firebase.js';
+    import { login, authReady, getCurrentUser, isStaff } from '../js/auth.js';
+    const $ = (id) => document.getElementById(id);
+    const refresh = () => {
+      const u = getCurrentUser();
+      $('s-state').textContent = !isConfigured ? 'Firebase is not configured (js/firebase-config.js).'
+        : u ? 'Logged in as ' + u.email + ' (role: ' + u.role + ')' : 'Not logged in.';
+      $('s-import').disabled = !(u && isStaff(u));
+    };
+    await authReady(); refresh();
+    $('s-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try { await login($('s-email').value.trim(), $('s-password').value, { createProfile: false }); $('s-msg').textContent = ''; }
+      catch (err) { $('s-msg').textContent = err.code ? err.code + ': ' + err.message : err.message; }
+      refresh();
+    });
+    $('s-import').addEventListener('click', async () => {
+      try {
+        const animals = await (await fetch('../data/animals.json')).json();
+        for (const a of animals) await setDoc(doc(db, 'animals', a.id), a);
+        $('s-result').textContent = 'Imported ' + animals.length + ' animals. Check Firestore in the console.';
+      } catch (err) { $('s-result').textContent = 'Failed: ' + (err.code || '') + ' ' + err.message; }
+    });
+  </script>
+</body>
+</html>

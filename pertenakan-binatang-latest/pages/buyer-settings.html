@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Settings | Kaznisah Farming Sdn Bhd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@400;600;700&family=Jacques+Francois&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body class="">
+
+  <div class="portal">
+    <aside class="portal-side">
+      <strong>[ BUYER PORTAL ]</strong>
+      <div class="user-chip"><span>[Account Name]</span><small>Buyer account</small></div>
+      <nav aria-label="Portal navigation">
+      <ul>
+        <li><a href="buyer-dashboard.html">Overview</a></li>
+        <li><a href="buyer-dashboard.html#saved">Saved Animals</a></li>
+        <li><a href="buyer-dashboard.html#inquiries">Inquiries</a></li>
+        <li><a href="buyer-messages.html">Messages</a></li>
+        <li><a href="buyer-settings.html" aria-current="page">Account Settings</a></li>
+      </ul>
+      </nav>
+      <a class="btn secondary" href="../index.html" id="logout-btn">Sign out</a>
+    </aside>
+    <div class="portal-main">
+      <div class="portal-top">
+        <a href="../index.html">&larr; Back to website</a>
+        <span>Buyer account</span>
+      </div>
+      <div class="dashboard-heading">
+        <div><p class="eyebrow">BUYER PORTAL</p><h1>Account settings</h1><p>Update your contact details or change your password.</p></div>
+      </div>
+      <section class="panel record-panel">
+        <h2>Your details</h2>
+        <form id="settings-form">
+          <label for="set-name">Full name</label>
+          <input type="text" id="set-name" name="name" required autocomplete="name">
+          <label for="set-email">Email</label>
+          <input type="email" id="set-email" name="email" readonly>
+          <p class="fine">Your email is your login, so it cannot be changed here.</p>
+          <label for="set-phone">Phone</label>
+          <input type="tel" id="set-phone" name="phone" autocomplete="tel">
+          <p role="alert"></p>
+          <button type="submit" class="btn">Save changes</button>
+        </form>
+      </section>
+      <section class="panel record-panel">
+        <h2>Password</h2>
+        <p>We will email you a link to choose a new password.</p>
+        <p id="pw-msg" role="status"></p>
+        <button type="button" class="btn secondary" id="reset-pw">Send password reset email</button>
+      </section>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/pages/buyer-settings.js"></script>
+</body>
+</html>

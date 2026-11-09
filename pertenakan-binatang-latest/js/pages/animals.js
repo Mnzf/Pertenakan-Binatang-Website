@@ -1,5 +1,6 @@
 // pages/animals.js - animal listing: category, filters, sorting, "load more"
 import { getPublicAnimals } from '../data.js';
+import { authReady } from '../auth.js';
 import { filterAnimals, sortAnimals, AGE_BANDS, PRICE_BANDS } from '../filters.js';
 import { animalCard, emptyState, errorState } from '../render.js';
 import { CATEGORIES, PAGE_SIZE, categoryLabel } from '../config.js';
@@ -28,7 +29,6 @@ function updateHeading() {
   const label = info ? info.label : 'All animals';
   $('#category-title').textContent = label;
   $('#category-crumb').textContent = `Our Animals / ${label}`;
-  $('#category-desc').textContent = info ? info.description : 'Browse the animals currently listed by the farm.';
   $('#list-title-text').textContent = info ? info.label : 'animals';
   document.title = `${label} | Kaznisah Farming Sdn Bhd`;
   $$('.category-nav a').forEach((link) => {
@@ -61,6 +61,7 @@ function render() {
 function refreshAll() { updateHeading(); updateBreedOptions(); shown = PAGE_SIZE; render(); }
 
 try {
+  await authReady();   // so the Save buttons know what this buyer has saved
   animals = await getPublicAnimals();
 
   addOptions(form.elements.species, CATEGORIES.map((c) => [c.slug, c.label]));

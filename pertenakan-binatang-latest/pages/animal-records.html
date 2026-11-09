@@ -20,23 +20,19 @@
       <ul>
         <li><a href="staff-dashboard.html">Overview</a></li>
         <li><a href="animal-records.html" aria-current="page">Animal Records</a></li>
-        <li><a href="#">Breeding + Calendar</a></li>
-        <li><a href="#">Health + Treatments</a></li>
-        <li><a href="#">Feed + Inventory</a></li>
-        <li><a href="#">Sales + Inquiries</a></li>
-        <li><a href="#">Reports / Export</a></li>
+        <li><a href="staff-inquiries.html">Sales + Inquiries</a></li>
       </ul>
       </nav>
       <a class="btn secondary" href="staff-login.html" id="logout-btn">Sign out</a>
     </aside>
     <div class="portal-main">
       <div class="portal-top">
+        <a href="../index.html">&larr; Back to website</a>
         <span>Operational workspace</span>
-        <button type="button" class="notification">Alerts [3]</button>
       </div>
       <div class="dashboard-heading">
         <div><p class="eyebrow">HERD MANAGEMENT</p><h1>Animal records</h1><p id="records-count">Loading...</p></div>
-        <div><button type="button" class="btn secondary">Export</button> <button type="button" class="btn" id="add-animal-btn">+ Add Animal</button></div>
+        <div><a class="btn" href="animal-form.html">+ Add Animal</a></div>
       </div>
       <section class="panel record-panel">
         <form class="record-tools" id="record-filters">
@@ -55,7 +51,7 @@
   </div>
 
   <!-- JavaScript -->
-   <script type="module" src="../js/main.js"></script>
-   <script type="module" src="../js/pages/animal-records.js"></script>
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/pages/animal-records.js"></script>
 </body>
 </html>

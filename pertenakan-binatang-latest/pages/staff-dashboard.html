@@ -20,63 +20,37 @@
       <ul>
         <li><a href="staff-dashboard.html" aria-current="page">Overview</a></li>
         <li><a href="animal-records.html">Animal Records</a></li>
-        <li><a href="#">Breeding + Calendar</a></li>
-        <li><a href="#">Health + Treatments</a></li>
-        <li><a href="#">Feed + Inventory</a></li>
-        <li><a href="#">Sales + Inquiries</a></li>
-        <li><a href="#">Reports / Export</a></li>
+        <li><a href="staff-inquiries.html">Sales + Inquiries</a></li>
       </ul>
       </nav>
       <a class="btn secondary" href="staff-login.html" id="logout-btn">Sign out</a>
     </aside>
     <div class="portal-main">
       <div class="portal-top">
+        <a href="../index.html">&larr; Back to website</a>
         <span>Operational workspace</span>
-        <button type="button" class="notification">Alerts [3]</button>
       </div>
       <div class="dashboard-heading">
-        <div><p class="eyebrow">HERD MANAGEMENT</p><h1>Ranch overview</h1><p>[Day, Date] | Last synced [Time]</p></div>
-        <a class="btn" href="animal-records.html">+ Add Animal</a>
+        <div><p class="eyebrow">HERD MANAGEMENT</p><h1>Ranch overview</h1><p>Herd numbers and the latest buyer activity.</p></div>
+        <a class="btn" href="animal-form.html">+ Add Animal</a>
       </div>
       <div class="metric-grid" id="metric-grid"><p class="loading">Loading...</p></div>
       <div class="dashboard-grid">
-        <section class="panel">
-          <h2>Priority alerts</h2>
-          <ul class="alerts">
-            <li><a href="#">12 vaccinations due this week</a></li>
-            <li><a href="#">5 health checks overdue</a></li>
-            <li><a href="#">8 expected births in 30 days</a></li>
-            <li><a href="#">3 low feed inventory items</a></li>
-          </ul>
-        </section>
         <section class="panel">
           <h2>Herd by species</h2>
           <ul class="bar-chart" id="species-chart"></ul>
         </section>
         <section class="panel">
-          <h2>Recent activity</h2>
-          <ul class="activity">
-            <li>Medical log updated [Animal ID] <small>[User] | [Time]</small></li>
-            <li>Animal added [Animal ID] <small>[User] | [Time]</small></li>
-            <li>Inquiry received [Animal ID] <small>[User] | [Time]</small></li>
-            <li>Weight recorded [Animal ID] <small>[User] | [Time]</small></li>
-          </ul>
-        </section>
-        <section class="panel">
-          <h2>Quick actions</h2>
-          <ul class="quick-actions">
-            <li><a href="#">Add health record</a></li>
-            <li><a href="#">Record weight</a></li>
-            <li><a href="#">Open breeding calendar</a></li>
-            <li><a href="#">Export herd report</a></li>
-          </ul>
+          <h2>Latest inquiries</h2>
+          <ul class="status-list" id="latest-inquiries"><li class="loading">Loading...</li></ul>
+          <a href="staff-inquiries.html">View all inquiries and messages</a>
         </section>
       </div>
     </div>
   </div>
 
   <!-- JavaScript -->
-   <script type="module" src="../js/main.js"></script>
-   <script type="module" src="../js/pages/staff-dashboard.js"></script>
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/pages/staff-dashboard.js"></script>
 </body>
 </html>

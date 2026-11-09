@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Form | Kaznisah Farming Sdn Bhd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@400;600;700&family=Jacques+Francois&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body class="">
+
+  <div class="portal staff-portal">
+    <aside class="portal-side">
+      <strong>[ HERD MGMT ]</strong>
+      <div class="user-chip"><span>[Account Name]</span><small>Manager</small></div>
+      <nav aria-label="Portal navigation">
+      <ul>
+        <li><a href="staff-dashboard.html">Overview</a></li>
+        <li><a href="animal-records.html" aria-current="page">Animal Records</a></li>
+        <li><a href="staff-inquiries.html">Sales + Inquiries</a></li>
+      </ul>
+      </nav>
+      <a class="btn secondary" href="staff-login.html" id="logout-btn">Sign out</a>
+    </aside>
+    <div class="portal-main">
+      <div class="portal-top">
+        <a href="../index.html">&larr; Back to website</a>
+        <span>Operational workspace</span>
+      </div>
+      <div class="back-row"><a href="animal-records.html">Back to Animal Records</a></div>
+      <section class="panel record-panel">
+        <h1 id="form-title">Add an animal</h1>
+        <form id="animal-form">
+          <div class="form-two-col">
+          <div><label for="af-tag">Tag ID *</label><input type="text" id="af-tag" name="tag" required></div>
+          <div><label for="af-name">Name *</label><input type="text" id="af-name" name="name" required></div>
+            <div><label for="af-species">Category *</label><select id="af-species" name="species" required><option value="">Select</option></select></div>
+          <div><label for="af-breed">Breed *</label><input type="text" id="af-breed" name="breed" required></div>
+            <div><label for="af-sex">Sex *</label><select id="af-sex" name="sex" required><option value="">Select</option><option value="female">Female</option><option value="male">Male</option><option value="mixed">Mixed (group)</option></select></div>
+          <div><label for="af-dob">Date of birth *</label><input type="date" id="af-dob" name="dob" required></div>
+          <div><label for="af-price">Price (B$, leave empty for Inquire)</label><input type="number" id="af-price" name="price" min="0" step="any"></div>
+            <div><label for="af-status">Status *</label><select id="af-status" name="status" required></select></div>
+          <div><label for="af-location">Location *</label><input type="text" id="af-location" name="location" required></div>
+          <div><label for="af-weight">Weight (kg) *</label><input type="number" id="af-weight" name="weightKg" required min="0" step="any"></div>
+          <div><label for="af-registration">Registration no.</label><input type="text" id="af-registration" name="registration"></div>
+          <div><label for="af-sire">Sire (father)</label><input type="text" id="af-sire" name="sire"></div>
+          <div><label for="af-dam">Dam (mother)</label><input type="text" id="af-dam" name="dam"></div>
+          </div>
+          <label for="af-description">Description (shown on the public page)</label>
+          <textarea id="af-description" name="description" rows="3"></textarea>
+          <label for="af-notes">Staff notes (private)</label>
+          <textarea id="af-notes" name="notes" rows="3"></textarea>
+          <label for="af-images">Photos: one per line. A file in assets/images/ (e.g. assets/images/animals/bella-1.jpg) or a full https:// link</label>
+          <textarea id="af-images" name="images" rows="3" placeholder="assets/images/animals/bella-1.jpg"></textarea>
+          <label><input type="checkbox" name="forSale" checked> Show on the public website (For Sale)</label>
+          <label><input type="checkbox" name="featured"> Feature on the home page</label>
+          <p role="alert"></p>
+          <button type="submit" class="btn">Save animal</button>
+          <a class="btn secondary" href="animal-records.html">Cancel</a>
+          <button type="button" class="btn secondary" id="af-delete" hidden>Delete animal</button>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/pages/animal-form.js"></script>
+</body>
+</html>

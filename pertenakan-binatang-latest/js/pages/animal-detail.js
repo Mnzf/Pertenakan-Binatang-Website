@@ -1,5 +1,6 @@
 // pages/animal-detail.js - one animal, chosen by ?id= in the URL
 import { getAnimalById, getPublicAnimals } from '../data.js';
+import { authReady } from '../auth.js';
 import { animalCard, imageUrl, inquireUrl, saveButton, statusBadge, emptyState } from '../render.js';
 import { categoryLabel } from '../config.js';
 import { $, $$, getParam, escapeHtml, formatPrice, formatAge, formatDate, capitalize, rootUrl } from '../utils.js';
@@ -75,6 +76,7 @@ async function renderRelated(a) {
 }
 
 try {
+  await authReady();
   const animal = await getAnimalById(getParam('id'));
   if (!animal || !animal.forSale) {
     root.innerHTML = emptyState('Sorry, we could not find that animal.', `<a href="${rootUrl('pages/animals.html')}">Browse all animals</a>`);

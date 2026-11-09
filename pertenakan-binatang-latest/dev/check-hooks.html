@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML hooks checker (developers only)</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <!-- DEVELOPER TOOL: checks that each page's HTML has the ids and scripts the JavaScript expects.
+       Open with Live Server. Delete the /dev folder before the final submission. -->
+  <main>
+    <h1>HTML hooks checker</h1>
+    <p id="summary" role="status">Checking...</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Page</th><th>Result</th><th>Missing</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+  </main>
+  <script type="module">
+    const MANIFEST = {"../index.html": {"ids": ["featured-list"], "fields": [], "scripts": ["main.js", "pages/home.js"]}, "../pages/animals.html": {"ids": ["animal-filters", "animal-list", "category-crumb", "category-title", "featured-in-category", "featured-list", "list-title-text", "load-more", "result-count"], "fields": ["age", "breed", "price", "sort", "species"], "scripts": ["main.js", "pages/animals.js"]}, "../pages/animal-detail.html": {"ids": ["animal-detail", "breadcrumb", "related-animals", "related-link", "related-list"], "fields": [], "scripts": ["main.js", "pages/animal-detail.js"]}, "../pages/inquire.html": {"ids": ["cancel-link", "crumb-animal", "inquiry-animal", "inquiry-confirmation", "inquiry-form", "inquiry-image", "inquiry-ref"], "fields": ["contactMethod", "contactTime", "message"], "scripts": ["main.js", "pages/inquire.js"]}, "../pages/contact.html": {"ids": ["contact-form"], "fields": ["email", "name", "phone", "type"], "scripts": ["main.js", "pages/contact.js"]}, "../pages/buyer-login.html": {"ids": ["buyer-login-form", "forgot-password"], "fields": [], "scripts": ["main.js", "pages/auth-forms.js"]}, "../pages/buyer-register.html": {"ids": ["buyer-register-form"], "fields": [], "scripts": ["main.js", "pages/auth-forms.js"]}, "../pages/staff-login.html": {"ids": ["forgot-password", "staff-login-form"], "fields": [], "scripts": ["main.js", "pages/auth-forms.js"]}, "../pages/buyer-dashboard.html": {"ids": ["inquiry-list", "latest-message", "metric-inquiries", "metric-replies", "metric-saved", "saved-list", "welcome-name"], "fields": [], "scripts": ["main.js", "pages/buyer-dashboard.js"]}, "../pages/buyer-messages.html": {"ids": ["msg-count", "thread-list"], "fields": [], "scripts": ["main.js", "pages/buyer-messages.js"]}, "../pages/buyer-settings.html": {"ids": ["pw-msg", "reset-pw", "settings-form"], "fields": ["email", "name", "phone"], "scripts": ["main.js", "pages/buyer-settings.js"]}, "../pages/staff-dashboard.html": {"ids": ["latest-inquiries", "metric-grid", "species-chart"], "fields": [], "scripts": ["main.js", "pages/staff-dashboard.js"]}, "../pages/animal-records.html": {"ids": ["record-filters", "records-count", "records-pagination", "records-table"], "fields": ["r-breed", "r-location", "r-search", "r-species", "r-status"], "scripts": ["main.js", "pages/animal-records.js"]}, "../pages/animal-profile.html": {"ids": ["profile-root"], "fields": [], "scripts": ["main.js", "pages/animal-profile.js"]}, "../pages/staff-inquiries.html": {"ids": ["contact-msg", "contact-table", "i-status", "inq-count", "inq-list", "inq-msg", "m-filter", "panel-contact", "panel-inq", "tab-contact", "tab-inq"], "fields": [], "scripts": ["main.js", "pages/staff-inquiries.js"]}, "../pages/animal-form.html": {"ids": ["af-delete", "animal-form", "form-title"], "fields": ["featured", "forSale", "images", "price", "species", "status"], "scripts": ["main.js", "pages/animal-form.js"]}, "../pages/about.html": {"ids": [], "fields": [], "scripts": ["main.js"]}};
+    const rows = document.getElementById('rows');
+    let bad = 0;
+    const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    for (const [page, need] of Object.entries(MANIFEST)) {
+      let missing = [];
+      try {
+        const res = await fetch(page);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+        for (const id of need.ids) if (!doc.getElementById(id)) missing.push('#' + id);
+        for (const f of need.fields) if (!doc.getElementById(f) && !doc.querySelector('[name="' + f + '"]')) missing.push('field ' + f);
+        const srcs = [...doc.querySelectorAll('script[src]')].map((s) => s.getAttribute('src'));
+        for (const s of need.scripts) if (!srcs.some((x) => x.endsWith('js/' + s))) missing.push('<script> ' + s);
+      } catch (e) { missing = ['could not load page (' + e.message + ')']; }
+      if (missing.length) bad++;
+      rows.insertAdjacentHTML('beforeend', '<tr><td>' + esc(page.replace('../', '')) + '</td><td>' + (missing.length ? 'MISSING' : 'OK') + '</td><td>' + esc(missing.join(', ')) + '</td></tr>');
+    }
+    document.getElementById('summary').textContent = bad ? bad + ' page(s) need fixing. See the table.' : 'All pages have the hooks the JavaScript needs.';
+  </script>
+</body>
+</html>

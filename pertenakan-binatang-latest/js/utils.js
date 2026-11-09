@@ -47,3 +47,10 @@ export function formatDate(iso) {
     ? '-'
     : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 }
+
+export function formatDateTime(iso) {
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime())
+    ? '-'
+    : d.toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
