@@ -12,7 +12,6 @@ Uses the variables defined in global.css
   font-weight: 600; font-size: 14px; text-decoration: none; white-space: nowrap;
 }
 .btn:hover { filter: brightness(.95); }
-.btn.secondary { background: transparent; }
 .btn.secondary:hover { background: var(--color-panel); }
 .btn.full { width: 100%; }
 .text-link { background: none; border: 0; padding: 0; min-height: 40px; text-decoration: underline; font-weight: 600; }
