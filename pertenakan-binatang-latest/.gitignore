@@ -1,16 +1,24 @@
 # OS junk
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Editor
+# Editors
 .vscode/
+.idea/
 
-# Node / Firebase local files
+# Node
 node_modules/
-.firebase/
-*.log
-firebase-debug.log
+npm-debug.log*
 
-# Secrets
-.env
-serviceAccountKey.json
+# Firebase local files
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+*.log
+
+# Cloudflare Worker local files
+.wrangler/
+.dev.vars
+.dev.vars.*
