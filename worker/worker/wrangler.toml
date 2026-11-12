@@ -1,0 +1,13 @@
+# Only needed if you deploy with the command line (wrangler). If you use the Cloudflare dashboard, ignore this file.
+name = "kaznisah-uploads"
+main = "index.js"
+compatibility_date = "2025-09-01"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "kaznisah-animal-photos"
+
+[vars]
+FIREBASE_PROJECT_ID = "pertenakan-binatang-website"
+# Your website addresses, no path and no trailing slash. Add your real GitHub Pages / Firebase address.
+ALLOWED_ORIGINS = "https://mnzf.github.io"
