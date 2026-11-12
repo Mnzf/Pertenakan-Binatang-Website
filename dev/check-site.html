@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Published site checker (developers only)</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <!-- DEVELOPER TOOL: open this page ON THE PUBLISHED WEBSITE (for example https://yourname.github.io/repo/dev/check-site.html).
+       It checks every page, image, script and link, and lists [placeholder] text that is still showing.
+       On the real website file names are case-sensitive, so this finds mistakes Live Server hides.
+       Delete the /dev folder before the final submission. -->
+  <main>
+    <h1>Published site checker</h1>
+    <p>Website folder being checked: <strong id="c-base"></strong></p>
+    <button type="button" class="btn" id="c-run">Run the checks</button>
+    <p id="c-summary" role="status"></p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Page</th><th>Result</th><th>Details</th></tr></thead>
+      <tbody id="c-rows"></tbody>
+    </table></div>
+  </main>
+  <script type="module">
+    import { checkSite } from './check-site.js';
+    const base = new URL('../', location.href).href;
+    document.getElementById('c-base').textContent = base;
+    const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    document.getElementById('c-run').addEventListener('click', async () => {
+      const rows = document.getElementById('c-rows'); rows.innerHTML = '';
+      const summary = document.getElementById('c-summary');
+      summary.textContent = 'Checking...';
+      const results = await checkSite({
+        baseUrl: base,
+        fetchResponse: (url) => fetch(url, { cache: 'no-store' }),
+        parseHtml: (html) => new DOMParser().parseFromString(html, 'text/html'),
+        onProgress: (page) => { summary.textContent = 'Checking ' + page + '...'; },
+      });
+      let problems = 0, warnings = 0;
+      for (const r of results) {
+        problems += r.problems.length; warnings += r.warnings.length;
+        const result = r.problems.length ? 'PROBLEM' : r.warnings.length ? 'WARNING' : 'OK';
+        rows.insertAdjacentHTML('beforeend', '<tr><td>' + esc(r.page) + '</td><td>' + result + '</td><td class="wrap">'
+          + [...r.problems.map((p) => 'PROBLEM: ' + p), ...r.warnings.map((w) => 'warning: ' + w)].map(esc).join('<br>') + '</td></tr>');
+      }
+      summary.textContent = problems ? problems + ' problem(s) and ' + warnings + ' warning(s). Fix every PROBLEM.' : warnings ? 'No problems. ' + warnings + ' warning(s) to review.' : 'Everything checked looks good.';
+    });
+  </script>
+</body>
+</html>
