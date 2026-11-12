@@ -53,6 +53,11 @@
           <textarea id="af-description" name="description" rows="3"></textarea>
           <label for="af-notes">Staff notes (private)</label>
           <textarea id="af-notes" name="notes" rows="3"></textarea>
+          <div id="af-upload" hidden>
+            <label for="af-files">Upload photos (JPG, PNG or WebP, up to 5 MB each)</label>
+            <input type="file" id="af-files" accept="image/jpeg,image/png,image/webp" multiple>
+            <p class="fine" id="af-upload-status" role="status"></p>
+          </div>
           <label for="af-images">Photos: one per line. A file in assets/images/ (e.g. assets/images/animals/bella-1.jpg) or a full https:// link</label>
           <textarea id="af-images" name="images" rows="3" placeholder="assets/images/animals/bella-1.jpg"></textarea>
           <label><input type="checkbox" name="forSale" checked> Show on the public website (For Sale)</label>

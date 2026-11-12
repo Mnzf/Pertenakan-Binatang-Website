@@ -2,6 +2,7 @@
 import { requireRole } from '../auth.js';
 import { getAnimalById, saveAnimal, deleteAnimal } from '../data.js';
 import { handleForm, showSuccess } from '../forms.js';
+import { uploadImage, uploadsEnabled } from '../uploads.js';
 import { CATEGORIES, ANIMAL_STATUSES } from '../config.js';
 import { $, getParam, rootUrl, capitalize } from '../utils.js';
 
@@ -15,6 +16,31 @@ if (await requireRole('staff')) {
   const opts = (items) => items.map(([v, l]) => `<option value="${v}">${l}</option>`).join('');
   form.elements.species.insertAdjacentHTML('beforeend', opts(CATEGORIES.map((c) => [c.slug, c.label])));
   form.elements.status.innerHTML = opts(ANIMAL_STATUSES.map((s) => [s, capitalize(s)]));
+
+  // Photo upload (only shown once the upload service address is set in js/config.js)
+  const uploadBox = $('#af-upload');
+  const fileInput = $('#af-files');
+  if (uploadBox && fileInput && uploadsEnabled()) {
+    uploadBox.hidden = false;
+    const status = $('#af-upload-status');
+    fileInput.addEventListener('change', async () => {
+      const files = [...fileInput.files];
+      if (!files.length) return;
+      const submit = form.querySelector('[type="submit"]');
+      submit.disabled = true;
+      const urls = [];
+      const failed = [];
+      for (const [index, file] of files.entries()) {
+        status.textContent = `Uploading ${index + 1} of ${files.length}: ${file.name}...`;
+        try { urls.push(await uploadImage(file)); }
+        catch (error) { console.error(error); failed.push(`${file.name}: ${error.message}`); }
+      }
+      if (urls.length) form.elements.images.value = [form.elements.images.value.trim(), ...urls].filter(Boolean).join('\n');
+      status.textContent = [urls.length ? `${urls.length} photo(s) uploaded and added below.` : '', ...failed].filter(Boolean).join(' ');
+      fileInput.value = '';
+      submit.disabled = false;
+    });
+  }
 
   let existing = null;
   if (id) {
