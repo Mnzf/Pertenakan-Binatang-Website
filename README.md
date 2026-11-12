@@ -63,5 +63,3 @@ When you create an account or send a message, the website stores your name, emai
 ## About this website
 
 The website was built by a student team as a client project for the farm. It uses HTML, CSS and JavaScript with Firebase for accounts and data.
-
-Developers: see [docs/DEVELOPER.md](docs/DEVELOPER.md).
