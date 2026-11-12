@@ -119,6 +119,7 @@ const MESSAGES = {
   'auth/too-many-requests': 'Too many attempts. Please wait a few minutes and try again.',
   'auth/network-request-failed': 'Network problem. Check your connection and try again.',
   'permission-denied': 'You do not have permission to do that.',
+  'auth/password-does-not-meet-requirements': 'That password does not meet the password rules. Use at least 8 characters with letters and numbers.'
 };
 export function authErrorMessage(error) {
   if (MESSAGES[error?.code]) return MESSAGES[error.code];
@@ -144,4 +145,9 @@ export async function requireRole(role) {
 
 function blockPage(message) {
   document.body.innerHTML = `<main><p class="error-state" role="alert">${message}</p><p><a class="btn" href="${rootUrl('index.html')}">Back to the website</a></p></main>`;
+}
+
+export async function getIdToken() {
+  if (!auth?.currentUser) throw new Error('Not logged in');
+  return auth.currentUser.getIdToken();
 }

@@ -22,4 +22,4 @@ export const STAFF_ROLES = ['owner', 'manager', 'staff'];
 
 export const ANIMAL_STATUSES = ['available', 'reserved', 'sold'];
 export const INQUIRY_STATUSES = ['Submitted', 'Contacted', 'Closed'];
-export const UPLOAD_API = 'kaznisah-uploads.amnzf03.workers.dev';
+export const UPLOAD_API = 'https://kaznisah-uploads.amnzf03.workers.dev';
