@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Import real animals (developers only)</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <!-- DEVELOPER TOOL. Imports a CSV of the client's real animals into Firestore (collection "animals").
+       Log in as the owner/staff account first (the security rules only let staff write).
+       Delete the /dev folder before the final submission. -->
+  <main>
+    <h1>Import real animals from a CSV file</h1>
+
+    <section class="panel">
+      <h2>1. Log in as staff</h2>
+      <p id="i-state" role="status">Checking...</p>
+      <form id="i-form">
+        <label for="i-email">Staff email</label>
+        <input type="email" id="i-email" autocomplete="email" required>
+        <label for="i-password">Password</label>
+        <input type="password" id="i-password" autocomplete="current-password" required>
+        <p id="i-msg" role="alert"></p>
+        <button type="submit" class="btn secondary">Log in</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>2. Choose the CSV file</h2>
+      <p>Use <code>docs/animals-template.csv</code> as the starting point (open it in Excel or Google Sheets, then Save as CSV).
+         Several photos in one cell: separate them with a semicolon (;). An animal whose tag already exists is updated, and its health and weight logs are kept.</p>
+      <label for="i-file">CSV file</label>
+      <input type="file" id="i-file" accept=".csv,text/csv">
+      <p id="i-summary" role="status"></p>
+      <div class="table-wrap" id="i-preview"></div>
+    </section>
+
+    <section class="panel">
+      <h2>3. Import</h2>
+      <button type="button" class="btn" id="i-import" disabled>Import the valid animals</button>
+      <p id="i-result" role="status"></p>
+    </section>
+  </main>
+
+  <script type="module">
+    import { isConfigured, db, doc, getDoc, setDoc, serverTimestamp } from '../js/firebase.js';
+    import { login, authReady, getCurrentUser, isStaff } from '../js/auth.js';
+    import { CATEGORIES, ANIMAL_STATUSES } from '../js/config.js';
+    import { parseCsv, validateRows, importAnimals } from './import-animals.js';
+
+    const $ = (id) => document.getElementById(id);
+    const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    let valid = [];
+
+    const refresh = () => {
+      const u = getCurrentUser();
+      $('i-state').textContent = !isConfigured ? 'Firebase is not configured (js/firebase-config.js).'
+        : u ? 'Logged in as ' + u.email + ' (role: ' + u.role + ')' : 'Not logged in.';
+      $('i-import').disabled = !(u && isStaff(u) && valid.length);
+    };
+    await authReady(); refresh();
+
+    $('i-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try { await login($('i-email').value.trim(), $('i-password').value, { createProfile: false }); $('i-msg').textContent = ''; }
+      catch (err) { $('i-msg').textContent = err.code ? err.code + ': ' + err.message : err.message; }
+      refresh();
+    });
+
+    $('i-file').addEventListener('change', async () => {
+      const file = $('i-file').files[0];
+      if (!file) return;
+      const { animals, errors } = validateRows(parseCsv(await file.text()), { categories: CATEGORIES, statuses: ANIMAL_STATUSES });
+      valid = animals;
+      $('i-summary').textContent = `${animals.length} valid animal(s), ${errors.length} row(s) with problems.`;
+      $('i-preview').innerHTML = (errors.length ? '<table><thead><tr><th>Line</th><th>Problem (fix in the CSV and choose the file again)</th></tr></thead><tbody>'
+          + errors.map((e) => `<tr><td>${e.line}</td><td class="wrap">${esc(e.message)}</td></tr>`).join('') + '</tbody></table>' : '')
+        + (animals.length ? '<table><thead><tr><th>Tag</th><th>Name</th><th>Category</th><th>Breed</th><th>Sex</th><th>DOB</th><th>Price</th><th>Status</th></tr></thead><tbody>'
+          + animals.map(({ data: a }) => `<tr><td>${esc(a.tag)}</td><td>${esc(a.name)}</td><td>${esc(a.species)}</td><td>${esc(a.breed)}</td><td>${esc(a.sex)}</td><td>${esc(a.dob)}</td><td>${a.price ?? 'Inquire'}</td><td>${esc(a.status)}</td></tr>`).join('') + '</tbody></table>' : '');
+      refresh();
+    });
+
+    $('i-import').addEventListener('click', async () => {
+      $('i-import').disabled = true;
+      try {
+        const { created, updated } = await importAnimals(valid, { db, doc, getDoc, setDoc, serverTimestamp });
+        $('i-result').textContent = `Done: ${created} added, ${updated} updated. Check Firestore and the Animal Records page.`;
+      } catch (err) { $('i-result').textContent = 'Failed: ' + (err.code || '') + ' ' + err.message; }
+      refresh();
+    });
+  </script>
+</body>
+</html>
