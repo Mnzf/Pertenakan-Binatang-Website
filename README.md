@@ -3,7 +3,7 @@
 **Raised the old-fashioned way.**
 Kaznisah Farming is a family-run farm in Kampong Bakiau, Brunei. The land has been passed down through generations, and the family raises livestock in a natural environment. This website lets you see the animals the farm has available and get in touch with the owners.
 
-**Visit the website:** `<YOUR-SITE-ADDRESS>`
+**Visit the website:** `https://mnzf.github.io/Pertenakan-Binatang-Website/`
 
 ---
 
