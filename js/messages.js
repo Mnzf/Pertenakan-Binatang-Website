@@ -13,7 +13,7 @@ const toMessage = (snap) => {
 const byActivity = (list) => list.sort((a, b) => String(b.lastMessageAt || b.createdAt).localeCompare(String(a.lastMessageAt || a.createdAt)));
 
 export async function sendMessage({ name, email, phone, type, message }, userId = null) {
-  if (!db) throw new Error('Firebase is not set up yet. Paste your settings into js/firebase-config.js.');
+  if (!db) throw new Error('Firebase is not set up yet. Paste settings into js/firebase-config.js.');
   // Exactly these fields: the security rules reject anything else.
   const data = {
     name: name.trim(), email: email.trim(), phone: (phone || '').trim(), type: type || '',
@@ -35,10 +35,10 @@ export async function getMyContactMessages(uid) {
   return byActivity(snap.docs.map(toMessage));
 }
 
-// Staff mark a message as handled (they replied by email / phone, or in the conversation).
+// Staff mark a message as handled (they replied by email / phone or in the conversation).
 export const setMessageHandled = (id, handled) => updateDoc(doc(db, 'messages', id), { handled });
 
-// ---- conversation under one contact message ----
+// conversation under one contact message.
 export async function getReplies(messageId) {
   const snap = await getDocs(collection(db, 'messages', messageId, 'replies'));
   return snap.docs

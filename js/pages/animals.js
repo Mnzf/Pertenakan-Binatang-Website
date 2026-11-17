@@ -61,7 +61,7 @@ function render() {
 function refreshAll() { updateHeading(); updateBreedOptions(); shown = PAGE_SIZE; render(); }
 
 try {
-  await authReady();   // so the Save buttons know what this buyer has saved
+  await authReady();   // this is for the Save buttons to know what this buyer has saved
   animals = await getPublicAnimals();
 
   addOptions(form.elements.species, CATEGORIES.map((c) => [c.slug, c.label]));

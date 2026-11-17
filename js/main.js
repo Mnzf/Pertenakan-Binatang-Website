@@ -26,7 +26,7 @@ if (header && nav) {
   document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setOpen(false); });
 }
 
-// 2. Clicks: log out + "Save" buttons. One listener on the document also works for cards added later by JS.
+// 2. Clicks: log out + "Save" buttons. One listener on the document also works for cards.
 document.addEventListener('click', async (event) => {
   const logoutLink = event.target.closest('#logout-btn, [data-logout]');
   if (logoutLink) {

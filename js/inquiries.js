@@ -8,6 +8,7 @@ const toInquiry = (snap) => {
   const d = snap.data();
   return { ...d, id: snap.id, ref: refFor(snap.id), createdAt: iso(d.createdAt), lastMessageAt: iso(d.lastMessageAt) };
 };
+
 // Newest activity first (a new reply counts as activity)
 const byActivity = (list) => list.sort((a, b) => String(b.lastMessageAt || b.createdAt).localeCompare(String(a.lastMessageAt || a.createdAt)));
 
@@ -45,7 +46,7 @@ export async function getMessages(inquiryId) {
     .sort((a, b) => String(a.createdAt).localeCompare(String(b.createdAt)));
 }
 
-// Staff and the buyer both use this. Returns the new message (so the page can show it straight away).
+// Staff and the buyer both use this. Returns the new message so the page can show it straight away.
 export async function sendInquiryMessage(inquiry, user, text) {
   const from = STAFF_ROLES.includes(user.role) ? 'staff' : 'buyer';
   await addDoc(collection(db, 'inquiries', inquiry.id, 'messages'), {
@@ -57,5 +58,5 @@ export async function sendInquiryMessage(inquiry, user, text) {
   return { text, from, authorName: user.name, createdAt: new Date().toISOString(), patch };
 }
 
-// Lets threads.js show an inquiry conversation (same shape as contactThread in messages.js).
+// Lets threads.js show an inquiry conversation.
 export const inquiryThread = { getMessages, sendMessage: sendInquiryMessage };

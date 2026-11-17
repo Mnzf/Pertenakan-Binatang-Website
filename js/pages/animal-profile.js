@@ -1,4 +1,4 @@
-// pages/animal-profile.js - staff view of ONE animal (?id=...), including "Add log entry"
+// pages/animal-profile.js - staff view of ONE animal (?id=...), including the "Add log entry" function
 import { requireRole } from '../auth.js';
 import { getAnimalById, updateAnimal, addLogEntry } from '../data.js';
 import { handleForm } from '../forms.js';
@@ -17,7 +17,7 @@ function table(headers, rows, empty) {
     <tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${escapeHtml(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
 
-// Simple line chart drawn as SVG (no chart library needed)
+// Simple line chart drawn
 function weightChart(history) {
   if (history.length < 2) return '<p>Not enough weight records yet. Add at least two weigh-ins.</p>';
   const kgs = history.map((h) => h.kg);

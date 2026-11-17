@@ -1,4 +1,4 @@
-// pages/buyer-settings.js - a buyer updates their name / phone, or asks for a password reset email
+// pages/buyer-settings.js - a buyer updates their name / phone or asks for a password reset email
 import { requireRole, updateProfileInfo, resetPassword, authErrorMessage } from '../auth.js';
 import { handleForm, showSuccess } from '../forms.js';
 import { $ } from '../utils.js';

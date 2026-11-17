@@ -1,4 +1,4 @@
-// pages/contact.js - contact / visit form (saved in Firestore, collection "messages")
+// pages/contact.js - contact / visit form saved in Firestore and collection for "messages"
 import { handleForm, showSuccess } from '../forms.js';
 import { sendMessage } from '../messages.js';
 import { authReady, getCurrentUser, authErrorMessage } from '../auth.js';

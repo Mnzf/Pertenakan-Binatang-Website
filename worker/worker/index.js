@@ -3,20 +3,6 @@
 // What it does
 //   POST /upload     staff only. Receives ONE image, stores it in R2, returns {"url": "..."}.
 //   GET  /img/<name> public.     Serves a stored image (cached for a year).
-//
-// How it stays safe
-//   1. The browser must send a Firebase login token (Authorization: Bearer <token>).
-//   2. We check the token's signature with Google's public keys, plus its audience, issuer and expiry.
-//   3. We read users/{uid} from Firestore WITH THAT TOKEN (so our security rules apply)
-//      and only accept the roles owner / manager / staff.
-//   4. Only JPEG, PNG and WebP up to 5 MB. We check the real file bytes, not just the label.
-//   5. Browsers from other websites are refused (CORS allow-list in ALLOWED_ORIGINS).
-//   6. File names are random, so nobody can overwrite or guess another file.
-//
-// Settings (Worker -> Settings -> Variables and Bindings)
-//   BUCKET               R2 bucket binding
-//   FIREBASE_PROJECT_ID  e.g. pertenakan-binatang-website
-//   ALLOWED_ORIGINS      comma separated, e.g. https://yourname.github.io,http://127.0.0.1:5500
 
 const STAFF_ROLES = ['owner', 'manager', 'staff'];
 const MAX_BYTES = 5 * 1024 * 1024;

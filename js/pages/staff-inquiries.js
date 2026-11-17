@@ -12,7 +12,7 @@ const filter = $('#i-status');
 const user = await requireRole('staff');
 
 if (user) {
-  // ---------- tabs ----------
+  // tabs
   const tabs = { inq: [$('#tab-inq'), $('#panel-inq')], contact: [$('#tab-contact'), $('#panel-contact')] };
   const showTab = (name) => Object.entries(tabs).forEach(([key, [tab, panel]]) => {
     tab.setAttribute('aria-selected', String(key === name));
@@ -21,7 +21,7 @@ if (user) {
   Object.entries(tabs).forEach(([key, [tab]]) => tab.addEventListener('click', () => showTab(key)));
   if (getParam('tab') === 'contact') showTab('contact');
 
-  // ---------- buyer inquiries ----------
+  // buyer inquiries
   let all = [];
   try {
     all = await getAllInquiries();
@@ -91,7 +91,7 @@ if (user) {
     list.innerHTML = '<p class="error-state" role="alert">Could not load inquiries.</p>';
   }
 
-  // ---------- contact-form messages (conversations, like the inquiries) ----------
+  // contact-form messages (conversations like the inquiries)
   const contactList = $('#contact-list');
   const mFilter = $('#m-filter');
   try {

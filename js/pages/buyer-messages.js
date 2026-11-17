@@ -1,4 +1,4 @@
-// pages/buyer-messages.js - a buyer reads the farm's replies (to inquiries and contact messages) and can answer
+// pages/buyer-messages.js - a buyer reads the farm's replies for their inquiries and contact messages and can also send a reply answer
 import { requireRole } from '../auth.js';
 import { getMyInquiries } from '../inquiries.js';
 import { getMyContactMessages, contactThread } from '../messages.js';

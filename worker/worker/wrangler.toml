@@ -1,4 +1,3 @@
-# Only needed if you deploy with the command line (wrangler). If you use the Cloudflare dashboard, ignore this file.
 name = "kaznisah-uploads"
 main = "index.js"
 compatibility_date = "2025-09-01"

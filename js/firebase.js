@@ -1,8 +1,5 @@
 // firebase.js - starts Firebase ONCE and re-exports the functions the site uses.
-// Every other file imports from HERE, never straight from the gstatic.com URLs.
-// That keeps the SDK version in a single place: to upgrade, change 12.5.0 below (all lines).
-//
-// Needs Live Server (ES modules do not load from file://).
+// Every other file imports from HERE, never straight from the URLs.
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';

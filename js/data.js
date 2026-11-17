@@ -1,5 +1,5 @@
 // data.js - reads and writes ANIMALS in Firestore (collection "animals"). The only file that does.
-// Pages never talk to Firestore for animals directly; they call these functions.
+// Pages never talk to Firestore for animals directly they will call using these functions.
 
 import {
   db, collection, doc, getDoc, getDocs, setDoc, addDoc, updateDoc, deleteDoc, query, where, serverTimestamp, arrayUnion,
@@ -10,7 +10,7 @@ function needDb() {
   return db;
 }
 
-// Turns a Firestore document into a plain animal object (adds its id, makes the date a string).
+// Turns a Firestore document into a plain animal object adds its id, makes the date a string.
 function toAnimal(snapshot) {
   const data = snapshot.data();
   const created = data.createdAt?.toDate ? data.createdAt.toDate().toISOString() : (data.createdAt ?? '');
@@ -19,7 +19,7 @@ function toAnimal(snapshot) {
 
 let publicList;
 
-// PUBLIC website: only animals marked "For Sale". (The rules also enforce this.)
+// PUBLIC website: can only access animals marked "For Sale".
 export function getPublicAnimals() {
   publicList ??= getDocs(query(collection(needDb(), 'animals'), where('forSale', '==', true)))
     .then((snap) => snap.docs.map(toAnimal))
@@ -27,7 +27,7 @@ export function getPublicAnimals() {
   return publicList;
 }
 
-// STAFF area: every animal. (Visitors get "permission-denied" from the rules.)
+// STAFF area: can access every animal.
 export async function getAnimals() {
   const snap = await getDocs(collection(needDb(), 'animals'));
   return snap.docs.map(toAnimal);
@@ -64,7 +64,7 @@ export async function saveAnimal(id, data) {
 export const updateAnimal = (id, patch) => updateDoc(doc(needDb(), 'animals', id), { ...patch, updatedAt: serverTimestamp() });
 export const deleteAnimal = (id) => deleteDoc(doc(needDb(), 'animals', id));
 
-// Add a health / weight / breeding log entry to an animal (kind = 'health' | 'weight' | 'breeding').
+// Add a health / weight / breeding log entry to an animal.
 const LOG_FIELDS = { health: 'healthLog', weight: 'weightHistory', breeding: 'breeding' };
 export async function addLogEntry(animal, kind, entry) {
   const field = LOG_FIELDS[kind];
