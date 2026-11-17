@@ -3,8 +3,6 @@
 export const $  = (selector, root = document) => root.querySelector(selector);
 export const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
-// ALWAYS escape text before putting it inside innerHTML. This stops someone typing
-// <script> into a form and having it run on another person's screen (XSS).
 export function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (c) => (
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
@@ -14,7 +12,6 @@ export function escapeHtml(value) {
 export const getParam = (name) => new URLSearchParams(location.search).get(name);
 
 // Builds a URL from the project root, so links work from index.html AND from /pages.
-// (this file lives in /js, so one level up is the project root)
 export const rootUrl = (path) => new URL(`../${path}`, import.meta.url).href;
 
 export const capitalize = (text) => String(text ?? '').charAt(0).toUpperCase() + String(text ?? '').slice(1);

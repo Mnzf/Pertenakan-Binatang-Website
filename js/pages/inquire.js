@@ -1,4 +1,4 @@
-// pages/inquire.js - "Send an inquiry to buy" (saved in Firestore, collection "inquiries")
+// pages/inquire.js - "Send an inquiry to buy" saved in Firestore and collection for "inquiries"
 import { getAnimalById } from '../data.js';
 import { authReady, getCurrentUser, authErrorMessage } from '../auth.js';
 import { createInquiry, refFor } from '../inquiries.js';
@@ -30,7 +30,7 @@ if (!animal || !animal.forSale || animal.status === 'sold') {
     $('.panel .eyebrow')?.after(Object.assign(document.createElement('p'), { textContent: 'You will be asked to log in (or create a buyer account) first. Your message is kept.' }));
   }
 
-  // Keep the draft while the buyer goes to log in (sessionStorage = this browser tab only)
+  // Keep the draft while the buyer goes to log in
   try {
     const draft = JSON.parse(sessionStorage.getItem(draftKey) ?? '{}');
     Object.entries(draft).forEach(([name, value]) => { if (form.elements[name]) form.elements[name].value = value; });
@@ -40,7 +40,7 @@ if (!animal || !animal.forSale || animal.status === 'sold') {
       sessionStorage.setItem(draftKey, JSON.stringify({
         contactMethod: form.elements.contactMethod.value, contactTime: form.elements.contactTime.value, message: form.elements.message.value,
       }));
-    } catch { /* storage blocked */ }
+    } catch {}
   });
 
   handleForm(

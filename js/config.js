@@ -3,9 +3,7 @@
 // How many animal cards to show before "Load more".
 export const PAGE_SIZE = 6;
 
-// Animal categories. These drive the header dropdown links, the filters and the
-// category pages. Confirm the final list with the client, then edit it here
-// (and in the header <ul class="dropdown"> in the HTML).
+// Animal categories. These drive the header dropdown links, the filters and the category pages.
 export const CATEGORIES = [
   { slug: 'cattle',  label: 'Cattle' },
   { slug: 'goats',   label: 'Goats' },

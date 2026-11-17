@@ -1,8 +1,7 @@
 // auth.js - login, registration, logout and role checks, using Firebase Auth + Firestore.
 //
-// A signed-in person is described by a "profile" object:
-//   { uid, email, name, phone, role, saved }      role = 'buyer' | 'staff' | 'manager' | 'owner'
-// The role lives in Firestore (users/{uid}), NOT in the browser, and the security rules enforce it.
+// A signed-in person is described by a "profile" object: { uid, email, name, phone, role, saved }      role = 'buyer' | 'staff' | 'manager' | 'owner'
+// The role lives in Firestore (users/{uid}), NOT in the browser, and the security rules will authenticate it.
 
 import {
   auth, db, isConfigured, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword,
@@ -33,7 +32,7 @@ async function loadProfile(user) {
   }
 }
 
-// Wait for this before checking who is logged in (the browser needs a moment to restore the session).
+// Wait for this before checking who is logged in while the browser needs a moment to restore the session.
 export function authReady() {
   ready ??= new Promise((resolve) => {
     if (!isConfigured) { resolve(null); return; }
@@ -62,7 +61,7 @@ export async function registerBuyer({ name, email, phone, password }) {
   return current;
 }
 
-// createProfile: a buyer who has an Auth account but no profile yet gets one. Staff login passes false.
+// createProfile: a buyer who has an Auth account but no profile yet gets one.
 export async function login(email, password, { remember = false, createProfile = true } = {}) {
   needFirebase();
   await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);
@@ -85,7 +84,7 @@ export async function logout() {
   current = null;
 }
 
-// A buyer changes their own name / phone (the rules only allow these two fields).
+// A buyer changes their own name / phone the rules will only allow these two fields to be change.
 export async function updateProfileInfo({ name, phone }) {
   needFirebase();
   if (!current) throw new Error('Not logged in');
@@ -105,7 +104,7 @@ export function safeNext(next, fallback) {
   try {
     const url = new URL(next ?? '', location.origin);
     if (next && url.origin === location.origin) return url.pathname + url.search;
-  } catch { /* ignore */ }
+  } catch {}
   return fallback;
 }
 
@@ -127,7 +126,6 @@ export function authErrorMessage(error) {
   return error?.message || 'Something went wrong. Please try again.';
 }
 
-// Put at the top of a protected page:   const user = await requireRole('staff');  if (user) { ... }
 export async function requireRole(role) {
   if (!isConfigured) { blockPage(NOT_CONFIGURED); return null; }
   const user = await authReady();

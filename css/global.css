@@ -4,7 +4,7 @@ Source: high-fidelity wireframe (Kaznisah Farming Sdn Bhd)
 */
 
 :root {
-  /* Colours (from the hi-fi design) */
+  /* Colours */
   --color-bg:          #e9daa3;   /* page background (cream)      */
   --color-brown:       #462b1a;   /* header, footer, sidebar      */
   --color-panel:       #ccb77e;   /* panels, dropdowns, info boxes */

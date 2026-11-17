@@ -1,8 +1,8 @@
-// filters.js - pure functions (no page code) so they are easy to test.
+// filters.js - only functions so that they are easy to test.
 
 import { ageInMonths } from './utils.js';
 
-// [min, max) ranges
+// (min, max) ranges
 export const AGE_BANDS = {
   under12: { label: 'Under 1 year',  range: [0, 12] },
   '12-36': { label: '1 to 3 years',  range: [12, 36] },

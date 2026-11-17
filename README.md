@@ -9,8 +9,6 @@ Kaznisah Farming is a family-run farm in Kampong Bakiau, Brunei. The land has be
 
 ## What you can do on the website
 
-| If you are... | You can... |
-|---|---|
 | A visitor (no account) | Read about the farm, browse and filter the animals, see photos and details, and send the farm a message |
 | A buyer (free account) | Everything above, plus save animals you like, send an inquiry to buy, and read and answer the farm's replies |
 | Farm staff | Manage the herd records, add animals and photos, and answer inquiries and messages (staff accounts are created by the farm owner) |
@@ -36,8 +34,6 @@ Select **Save** on an animal card (you need to be logged in). Your saved animals
 ### Contact the farm or book a visit
 Use the **Contact** page, or reach the owners directly:
 
-| | |
-|---|---|
 | Address | Hust Brew, No 8 Simpang 88 Kg Bekiau, Jalan Lamunin, Kampong Kiudang TE1143 |
 | Hours | Monday to Sunday, 08:00 - 16:30, **by appointment** |
 | Owner | +673 8861526 |

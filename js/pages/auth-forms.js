@@ -1,4 +1,4 @@
-// pages/auth-forms.js - buyer login, buyer registration, staff login (Firebase Auth)
+// pages/auth-forms.js - buyer login, buyer registration, staff login Firebase Authenticate
 import { handleForm, showError, showSuccess } from '../forms.js';
 import {
   authReady, login, logout, registerBuyer, resetPassword, safeNext, authErrorMessage, isStaff,

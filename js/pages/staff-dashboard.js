@@ -1,4 +1,4 @@
-// pages/staff-dashboard.js - herd overview numbers + latest inquiries, calculated from the data
+// pages/staff-dashboard.js - herd overview numbers + latest inquiries
 import { requireRole } from '../auth.js';
 import { getAnimals } from '../data.js';
 import { getAllInquiries } from '../inquiries.js';

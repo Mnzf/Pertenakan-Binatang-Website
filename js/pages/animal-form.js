@@ -9,7 +9,7 @@ import { $, getParam, rootUrl, capitalize } from '../utils.js';
 const form = $('#animal-form');
 const id = getParam('id');
 
-// Images: a file inside this website (assets/...) or a full https:// link. One per line.
+// Images: a file inside this website (assets/...) or a full https:// link per line.
 const IMAGE_OK = /^(assets\/[\w\-./]+|https:\/\/\S+)$/;
 
 if (await requireRole('staff')) {
@@ -17,7 +17,7 @@ if (await requireRole('staff')) {
   form.elements.species.insertAdjacentHTML('beforeend', opts(CATEGORIES.map((c) => [c.slug, c.label])));
   form.elements.status.innerHTML = opts(ANIMAL_STATUSES.map((s) => [s, capitalize(s)]));
 
-  // Photo upload (only shown once the upload service address is set in js/config.js)
+  // Photo upload
   const uploadBox = $('#af-upload');
   const fileInput = $('#af-files');
   if (uploadBox && fileInput && uploadsEnabled()) {

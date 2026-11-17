@@ -8,7 +8,6 @@ const QUALITY = 0.85;
 const MAX_BYTES = 5 * 1024 * 1024;
 const ALLOWED = ['image/jpeg', 'image/png', 'image/webp'];
 
-// True once someone has pasted the Worker address into js/config.js
 export const uploadsEnabled = () => /^https:\/\/\S+$/.test(UPLOAD_API);
 
 export async function prepareImage(file) {

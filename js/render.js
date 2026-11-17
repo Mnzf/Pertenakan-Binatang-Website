@@ -1,5 +1,4 @@
 // render.js - builds HTML strings for things that appear on several pages.
-// Every value that came from data goes through escapeHtml().
 
 import { rootUrl, escapeHtml, formatPrice, formatAge, capitalize } from './utils.js';
 import { isSaved } from './saved.js';
